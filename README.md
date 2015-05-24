@@ -1,6 +1,6 @@
 My blog
 ========
-Another lightweight blog cms based on tornado.
+Another lightweight blog cms based on tornado.(Don't complete)
 
 Prequisites
 ---
@@ -13,4 +13,9 @@ Deployment
 ---
 	sudo python entry.py
 
-Visit http://localhost:8888/blog
+Visit http://localhost/
+
+ToDo
+---
+* Design Background.
+* Add Markdown Support.

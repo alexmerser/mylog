@@ -1,0 +1,29 @@
+{% module Header() %}
+<!-- main -->
+<div class="main">
+	{% for it in articlelist %}
+	<span class="span_bt1" ><a href="/article/{{ it[0] }}">{% raw it[1] %}</a></span>
+	<div class="article">
+		{% raw it[2][0] %}
+	</div>
+	<ul class="ul_main_btm">
+		<li><span class="span1_main">{% raw it[4] %}</span></li>
+		<li><span class="span2_main">{{ it[5] }}</span></li>
+		<li><a href="/article/{{ it[0] }}">全文链接</a></li>
+	</ul>
+	{% end %}
+</div>
+<!-- main -->
+<div class="clear"></div>
+<div class="msdn">
+	<a href="#">上一页</a>
+	<span class="current">1</span>
+	<a href="#">2</a>
+	<a href="#">3</a>
+	<a href="#">4</a>
+	<a href="#">5</a>
+	<a href="#">6</a>
+	<a href="#">下一页</a>
+</div>
+
+{% module Footer() %}

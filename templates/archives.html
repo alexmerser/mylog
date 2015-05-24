@@ -1,0 +1,15 @@
+{% module Header() %}
+<!-- main -->
+{% for year in years %}
+<div class="guidang">
+	
+	<h1>2015年</h1>
+	{% for it in archives[year] %}
+	<ul class="ul_gd">
+		<li><span>{{ it[4] }}</span><a href="/article/{{ it[0] }}">{% raw it[1] %}</a></li>
+	</ul>
+	{% end %}
+</div>
+{% end %}
+<!-- main -->
+{% module Footer() %}

@@ -1,0 +1,42 @@
+{% module Header() %}
+
+<script language="javascript" type="text/javascript">
+function appendText(w){
+
+    $(w).html("<div class=k_fh><span class=span_p2>内容：</span><textarea name=f class=text_p2></textarea><input name=g type=button value=发布 class=btn_fb></div>");
+
+}
+
+</script>
+<!-- main -->
+<div class="liuyan">
+	<span class="span_gwly">给我留言</span>
+	{% for it in guests %}
+	<div class="liuyan_1">
+		<img src="{% module SiteURL("images/ly_img1.jpg") %}" width="50" height="50" />
+		<div class="liuyan_1_r">
+			<span>{{ it[1] }}</span>
+			<p>{{ it[4] }}</p>
+			<a class="a_lyb_hf" onclick="appendText(h1)">回复</a>
+			<div id="h1"></div>
+		</div>
+	</div>
+	{% end %}
+	<div class="ly_page">
+		<a href="#">1</a><a href="#">2</a><a href="#" id="on">3</a><a href="#">4</a><a href="#">5</a>...<a href="#">408</a>
+	</div>
+
+	<div class="clear"></div>
+	<div class="ly_nr">
+		<img src="{% module SiteURL("images/ly_img.jpg") %}" width="50" height="50" class="img_ly" />
+		<div class="ly_nr_r">
+		<textarea name="" cols="" rows="" class="text_ly"></textarea>
+		<a href="#" class="ly_tx"></a>
+		<a href="#" class="a_fb" title="发布"></a>
+		</div>
+	</div>
+	
+	</div>
+<!-- main -->
+
+{% module Footer() %}

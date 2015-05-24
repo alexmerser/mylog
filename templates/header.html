@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<link type="text/css" rel="stylesheet" href="{% module SiteURL("css/css.css") %}" />
+	<link type="text/css" rel="stylesheet" href="{% module SiteURL("css/style.css") %}" />
+	<title>{% module Config('blogname') %}</title>
+</head>
+
+<body>
+<div class="top_bg">
+<div class="top">
+	<img src="{% module SiteURL("images/top_img1.png") %}"/>
+	<span>{% module Config('nickname') %}</span>
+</div>
+</div>
+
+<div class="nav">
+<div class="menu">
+	<a href="/">首页</a>·
+	<a href="/archives">归档</a>·
+	<a href="/guest">留言</a>·
+	<a href="http://github.com/5loyd">Github</a>
+</div>

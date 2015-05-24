@@ -21,6 +21,10 @@ class BaseHandler(tornado.web.RequestHandler):
 			self.render(tmp_dir("except/404.html"))
 		elif status_code == 500:
 			self.render(tmp_dir("except/500.html"))
+		elif status_code == 403:
+			self.render(tmp_dir("except/403.html"))
+		elif status_code == 503:
+			self.render(tmp_dir("except/503.html"))
 		else:
 			self.write('error:' + str(status_code))
 

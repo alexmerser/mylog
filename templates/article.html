@@ -38,7 +38,7 @@
 	<div class="clear"></div>
 	<ul class="ul_pl">
 		{% for it in comments %}
-		<li><img src="{% module SiteURL("images/pl_img3.jpg") %}" />
+		<li><img src="{{ static_url("images/pl_img3.jpg") }}" />
 			<p><b>{{ it[2] }}</b>：{{ it[5] }}</p>
 			<a class="a_hf" onclick="appendText(h6)">回复</a>
 		<div id="h6"> </div>

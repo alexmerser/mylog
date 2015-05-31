@@ -13,7 +13,7 @@ function appendText(w){
 	<span class="span_gwly">给我留言</span>
 	{% for it in guests %}
 	<div class="liuyan_1">
-		<img src="{% module SiteURL("images/ly_img1.jpg") %}" width="50" height="50" />
+		<img src="{{ static_url("images/ly_img1.jpg") }}" width="50" height="50" />
 		<div class="liuyan_1_r">
 			<span>{{ it[1] }}</span>
 			<p>{{ it[4] }}</p>
@@ -28,7 +28,7 @@ function appendText(w){
 
 	<div class="clear"></div>
 	<div class="ly_nr">
-		<img src="{% module SiteURL("images/ly_img.jpg") %}" width="50" height="50" class="img_ly" />
+		<img src="{{ static_url("images/ly_img.jpg") }}" width="50" height="50" class="img_ly" />
 		<div class="ly_nr_r">
 		<textarea name="" cols="" rows="" class="text_ly"></textarea>
 		<a href="#" class="ly_tx"></a>

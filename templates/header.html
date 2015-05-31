@@ -4,15 +4,15 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
-	<link type="text/css" rel="stylesheet" href="{% module SiteURL("css/css.css") %}" />
-	<link type="text/css" rel="stylesheet" href="{% module SiteURL("css/style.css") %}" />
+	<link type="text/css" rel="stylesheet" href="{{ static_url("css/css.css") }}" />
+	<link type="text/css" rel="stylesheet" href="{{ static_url("css/style.css") }}" />
 	<title>{% module Config('blogname') %}</title>
 </head>
 
 <body>
 <div class="top_bg">
 <div class="top">
-	<img src="{% module SiteURL("images/top_img1.png") %}"/>
+	<img src="{{ static_url("images/top_img1.png") }}"/>
 	<span>{% module Config('nickname') %}</span>
 </div>
 </div>

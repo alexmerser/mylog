@@ -13,5 +13,7 @@ options = {
 	'upload' 	: "upload/",
 
 	'db_path' : 'db/data.db',
-	'split_sign' : '[split_sign]'
+	'split_sign' : '[split_sign]',
+	'username' : 'admin',
+	'password' : '123456'
 }

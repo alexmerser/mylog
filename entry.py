@@ -1,5 +1,5 @@
-﻿#!/usr/bin/python
-#coding : utf8
+#!/usr/bin/python2.7
+#coding: utf8
 import tornado.ioloop
 import tornado.web
 import threading
@@ -83,8 +83,8 @@ application = tornado.web.Application([
 	(r"/guest", GuestHandler),
 	(r"/archives", ArchivesHandler),
 	(r"/article/([^/]*)", ArticleHandler),
-	(r"/admin/index", manager.AdminHandler),
-	(r"/admin/", manager.LoginHandler),
+	(r"/login", manager.LoginHandler),
+	(r"/admin/([^/]*)", manager.AdminHandler),
 	(r".*", BaseHandler),
 ], debug = True,**settings)
 

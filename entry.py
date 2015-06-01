@@ -83,7 +83,7 @@ application = tornado.web.Application([
 	(r"/guest", GuestHandler),
 	(r"/archives", ArchivesHandler),
 	(r"/article/([^/]*)", ArticleHandler),
-	(r"/admin/hello", manager.AdminHandler),
+	(r"/admin/index", manager.AdminHandler),
 	(r"/admin/", manager.LoginHandler),
 	(r".*", BaseHandler),
 ], debug = True,**settings)

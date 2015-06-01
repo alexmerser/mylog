@@ -43,7 +43,7 @@ class LoginHandler(BaseHandler):
 
 		if user == C('username') and pwd == C('password'):
 			self.set_secure_cookie("user", user)
-			self.redirect("/admin/hello")
+			self.redirect("/admin/index")
 
 		else:
 			self.redirect("/admin/")

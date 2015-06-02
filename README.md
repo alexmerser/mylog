@@ -11,7 +11,8 @@ Prequisites
 
 Deployment
 ---
-	sudo python entry.py
+	chmod +x entry.py
+	sudo ./entry.py
 
 Visit http://localhost/
 

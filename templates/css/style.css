@@ -37,7 +37,7 @@ body
 
 .nav 
 {
-	width:1060px;
+	width:900px;
 	overflow:hidden;
 	margin:0 auto;
 	background:#FFFFFF;
@@ -99,6 +99,7 @@ body
 	font-size: 16px;
 	color: #333333;
 	line-height: 30px;
+	font-family: 'Noto Serif', 'Hiragino Sans GB', 'Microsoft Yahei', serif;
 }
 
 .main p 
@@ -164,22 +165,26 @@ DIV.msdn
 	padding:0 45px;
 }
 DIV.msdn A 
-{BORDER: #e4e3e3 1px solid;
+{
+	BORDER: #e4e3e3 1px solid;
 	MARGIN: 0px 4px;
 	COLOR: #666666;
 	PADDING:8px 14px;
 }
 DIV.msdn A:hover 
-{BORDER: #e4e3e3 1px solid;
+{
+	BORDER: #e4e3e3 1px solid;
 	COLOR:#ffffff;
 	background:#666666;
 }
 DIV.pagination A:active 
-{BORDER: #e4e3e3 1px solid;
+{
+	BORDER: #e4e3e3 1px solid;
 	COLOR: #666666;
 }
 DIV.msdn SPAN.current 
-{BORDER: #e4e3e3 1px solid;
+{
+	BORDER: #e4e3e3 1px solid;
 	PADDING:8px 14px;
 	MARGIN: 0px 4px;
 	COLOR: #666666;

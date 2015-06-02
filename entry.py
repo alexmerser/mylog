@@ -79,13 +79,13 @@ settings = {
 }
 
 application = tornado.web.Application([
-	(r"/", MainHandler),
-	(r"/guest", GuestHandler),
-	(r"/archives", ArchivesHandler),
-	(r"/article/([^/]*)", ArticleHandler),
-	(r"/login", manager.LoginHandler),
-	(r"/admin/([^/]*)", manager.AdminHandler),
-	(r".*", BaseHandler),
+	(r"/", 						MainHandler),
+	(r"/guest", 				GuestHandler),
+	(r"/archives", 				ArchivesHandler),
+	(r"/article/([^/]*)", 		ArticleHandler),
+	(r"/login", 				manager.LoginHandler),
+	(r"/admin/([^/]*)", 		manager.AdminHandler),
+	(r".*", 					BaseHandler),
 ], debug = True,**settings)
 
 if __name__ == "__main__":

@@ -2,21 +2,27 @@
 /* CSS Document */
 body, div, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, input, textarea, p, blockquote 
 {
-	margin:0; padding:0; position:0; font-size:12px;
+	margin:0;
+	padding:0;
+	position:0;
+	font-size:12px;
 }
 fieldset, img 
 {	border:0;
 }
 
 *{
-	margin:0; padding:0;
+	margin:0;
+	padding:0;
 }
 address, caption, cite, code, dfn, em, strong, th, var 
 {
-	font-style:normal; font-weight:normal;
+	font-style:normal;
+	font-weight:normal;
 }
 ol, ul 
-{list-style:none;
+{
+	list-style:none;
 }
 li 
 {
@@ -28,7 +34,9 @@ caption, th
 }
 h1, h2, h3, h4, h5, h6 
 {
-	font-size:100%; font-weight:normal; font-family:微软雅黑;
+	font-size:100%;
+	font-weight:normal;
+	font-family:微软雅黑;
 }
 abbr, acronym 
 {	border:0;
@@ -39,21 +47,29 @@ fieldset
 }
 button 
 {
-	line-height:1.2; vertical-align:middle; cursor:pointer;
+	line-height:1.2;
+	vertical-align:middle;
+	cursor:pointer;
 }
 a 
-{	text-decoration:none;color:#333333; font-size:12px; font-family:微软雅黑;
+{	text-decoration:none;color:#333333;
+	font-size:12px;
+	font-family:微软雅黑;
+	font-weight: bold;;
 }
 a:hover 
 {
-	color:#FF0000; text-decoration:none;
+	color:#FF0000;
+	text-decoration:none;
 }
 a:active 
 {
 	color: #333333;text-decoration: none;
 }
 p 
-{	word-break:break-all; font-size:12px; font-family:微软雅黑;
+{	word-break:break-all;
+	font-size:12px;
+	font-family:微软雅黑;
 }
 .clear 
 {
@@ -61,5 +77,6 @@ p
 }
 span,samp 
 {
-	font-size:12px; font-family:微软雅黑;
+	font-size:12px;
+	font-family:微软雅黑;
 }

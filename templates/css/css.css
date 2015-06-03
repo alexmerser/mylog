@@ -52,10 +52,15 @@ button
 	cursor:pointer;
 }
 a 
-{	text-decoration:none;color:#333333;
+{	
+	text-decoration:none;
+	color:#333333;
 	font-size:12px;
 	font-family:微软雅黑;
-	font-weight: bold;;
+}
+.span_bt1 a
+{
+	font-weight: bold;
 }
 a:hover 
 {

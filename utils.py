@@ -4,10 +4,15 @@ import sys
 import os
 import sqlite3
 import config
+import time
 
 #获取网站配置
 def C(key = ''):
 	return config.options if (key == '') else config.options[key]
+
+#得到当前时间
+def GetNowTime():
+    return time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time()))
 
 #获取网站根路径
 def cur_dir():

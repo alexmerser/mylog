@@ -1,5 +1,6 @@
 #coding: utf8
 import tornado.web
+import db
 from utils import *
 
 # 简单的用户认证实现
@@ -40,8 +41,16 @@ class AdminHandler(BaseHandler):
 		m = self.get_argument("m","none")
 
 		if m == "add_article":
-			print self.get_argument("title")
-			self.redirect("/admin/index")
+			title = self.get_argument("title" ,"")
+			content = self.get_argument("content","")
+
+			if title == "" or content == "":
+				self.redirect("/login")
+
+			db.add_article(title,content)
+
+			self.redirect("/admin/%s" % page)
+
 		else:
 			self.redirect("/login")
 

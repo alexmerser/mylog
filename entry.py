@@ -33,8 +33,10 @@ class MainHandler(tornado.web.RequestHandler):
 
 	def get(self):
 		
+		articlelist = db.get_article()
+
 		self.render(tmp_dir("index.html"),\
-		articlelist = db.get_article(),
+		articlelist = articlelist,
 		pageid 	 = 0)
 
 #文章页
@@ -90,7 +92,7 @@ application = tornado.web.Application([
 
 if __name__ == "__main__":
 	
-	if db.initdb(C('db_path')) == False:
+	if db.initdb() == False:
 		print 'Database Initialize Faild!'
 		exit(0)
 

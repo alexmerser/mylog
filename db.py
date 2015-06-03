@@ -1,8 +1,9 @@
 ﻿#coding : utf8
 import sqlite3
+import time
 from utils import *
 
-g_db = 0
+db = 0
 
 g_article  = {}
 g_comment  = {}
@@ -43,6 +44,22 @@ def get_article():
 
 	return articles
 
+def add_article(title,content):
+
+	date = GetNowTime() 
+
+	db = connectdb()
+
+	sql = 'insert into article values(null,"%s","%s","%s",0)' % (title,content,date)
+
+	db.execute(sql)
+
+	db.commit()
+
+	closedb(db)
+
+	init_article()
+
 #通过id获得文章
 def get_atcbyid(id):
 
@@ -70,20 +87,26 @@ def init_article():
 
 	global g_article
 	
+	db = connectdb()
+
 	g_article = {}
 
-	result = g_db.execute("select * from article")
+	result = db.execute("select * from article")
 	for row in result:
 		g_article[int(row[0])] = row
+
+	closedb(db)
 
 #初始化评论
 def init_comment():
 
 	global g_comment
 	
+	db = connectdb()
+
 	g_comment = {}
 
-	result = g_db.execute("select * from comment")
+	result = db.execute("select * from comment")
 
 	for row in result:
 		if g_comment.has_key(int(row[0])):
@@ -91,43 +114,41 @@ def init_comment():
 		else:
 			g_comment[int(row[0])] = [row]
 
+	closedb(db)
+
 #初始化留言
 def init_guest():
 
 	global g_guest
 	
+	db = connectdb()
+
 	g_guest = []
 
-	result = g_db.execute("select * from guest")
+	result = db.execute("select * from guest")
 
 	for row in result:
 		g_guest.append(row)
-		
+	
+	closedb(db)
 
 #打开和关闭数据库链接
-def connectdb(path):
+def connectdb():
 	
-	global g_db
-	
-	g_db = sqlite3.connect(cur_dir()+path)
+	return sqlite3.connect(cur_dir()+C("db_path"))
 		
-def closedb():
+def closedb(db):
 	
-	g_db.close()
+	db.close()
 
 #初始化数据库
-def initdb(path):
-
-	global g_db
+def initdb():
 
 	try:
-		connectdb(path)
 		init_article()
 		init_comment()
 		init_guest()
-		
-		closedb()
-		
+
 		return True
 	except:
 		return False

@@ -29,17 +29,27 @@ class AdminHandler(BaseHandler):
 
 		#处理请求页面
 		try:
-			self.render(tmp_dir("admin/%s.html" % page))
+			if page == "articles":
+				self.render(tmp_dir("admin/%s.html" % page),articles = db.get_article())
+
+			elif page == "update":
+				id = self.get_argument("id")
+
+				self.render(tmp_dir("admin/%s.html" % page),article = db.get_atcbyid(id,True),id = id)
+			else:
+				self.render(tmp_dir("admin/%s.html" % page))
 		except:
 			self.redirect("/login")
 
 	def post(self,page):
+
 		if self.check_login() == False:
 			self.redirect("/login")
 			return
 
 		m = self.get_argument("m","none")
 
+		#添加文章
 		if m == "add_article":
 			title = self.get_argument("title" ,"")
 			content = self.get_argument("content","")
@@ -51,6 +61,31 @@ class AdminHandler(BaseHandler):
 
 			self.redirect("/admin/%s" % page)
 
+		#删除文章
+		elif m == "del_article":
+			id = self.get_argument("id" ,"")
+
+			if id == "":
+				self.redirect("/login")
+
+			db.del_article(id)
+
+			self.redirect("/admin/%s" % page)
+
+		#修改文章
+		elif m == "update_article":
+
+			id = self.get_argument("id" ,"")
+
+			title = self.get_argument("title" ,"")
+			content = self.get_argument("content","")
+
+			if id == "" or title == "" or content == "":
+				self.redirect("/login")
+
+			db.update_article(id,title,content)
+
+			self.redirect("/admin/%s" % page)
 		else:
 			self.redirect("/login")
 

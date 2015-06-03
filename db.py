@@ -50,10 +50,41 @@ def add_article(title,content):
 
 	db = connectdb()
 
+	content = Space2Char(content)
+
 	sql = 'insert into article values(null,"%s","%s","%s",0)' % (title,content,date)
+	db.execute(sql)
+	db.commit()
+
+	closedb(db)
+
+	init_article()
+
+def update_article(id,title,content):
+
+	date = GetNowTime() 
+
+	db = connectdb()
+
+	content = Space2Char(content)
+
+	sql = 'update article set title="%s",content="%s" where id=%s' % (title,content,id)
 
 	db.execute(sql)
+	db.commit()
 
+	closedb(db)
+
+	init_article()
+
+
+def del_article(id):
+
+	db = connectdb()
+
+	sql = 'delete from article where id=%s' % id
+
+	db.execute(sql)
 	db.commit()
 
 	closedb(db)
@@ -61,11 +92,14 @@ def add_article(title,content):
 	init_article()
 
 #通过id获得文章
-def get_atcbyid(id):
+def get_atcbyid(id,isEdit = False):
 
 	#将元组转为列表，合并文章内容
-	atc = list(g_article[int(id)])
-	atc[2] = atc[2].replace(C('split_sign'),"")
+	atc = g_article[int(id)]
+
+	if isEdit == False:
+		atc[2] = atc[2].replace(C('split_sign'),"")
+
 	return atc
 
 #从id获得评论
@@ -93,6 +127,9 @@ def init_article():
 
 	result = db.execute("select * from article")
 	for row in result:
+
+		row = list(row)
+		row[2] = Char2Space(row[2])
 		g_article[int(row[0])] = row
 
 	closedb(db)

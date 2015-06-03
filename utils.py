@@ -6,6 +6,20 @@ import sqlite3
 import config
 import time
 
+#空白字符转义
+def Space2Char(content):
+	content = content.replace("\n","\\n")
+	content = content.replace("\r","\\r")
+
+	return content
+
+#转义字符
+def Char2Space(content):
+	content = content.replace("\\n","\n")
+	content = content.replace("\\r","\r")
+
+	return content
+
 #获取网站配置
 def C(key = ''):
 	return config.options if (key == '') else config.options[key]

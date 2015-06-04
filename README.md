@@ -1,6 +1,6 @@
 My blog
 ========
-Another lightweight blog cms based on tornado.(Don't complete)
+Another lightweight blog cms based on tornado.
 
 Prequisites
 ---

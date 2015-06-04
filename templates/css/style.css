@@ -349,6 +349,8 @@ DIV.msdn SPAN.current
 	margin:30px auto 0;
 	border:1px solid #eaeaea;
 	padding:30px;
+	padding-left:40px;
+	padding-right:40px;
 }
 .guidang h1 
 {
@@ -369,7 +371,12 @@ DIV.msdn SPAN.current
 	border-bottom:1px solid #eeeeee;
 }
 
-.ul_gd li a,.ul_gd li a:visited 
+.ul_gd a
+{
+	font-family: 'Noto Serif', 'Hiragino Sans GB', 'Microsoft Yahei', serif;
+}
+
+.ul_gd li,.ul_gd li a:visited 
 {
 	font-size:16px;
 	color:#000000;
@@ -380,7 +387,7 @@ DIV.msdn SPAN.current
 }
 .ul_gd li span 
 {
-	font-size: 13px;
+	font-size: 18px;
 	float:right;
 	color:#999999;
 }

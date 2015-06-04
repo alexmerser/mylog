@@ -22,10 +22,6 @@ class Footer(tornado.web.UIModule):
 
 
 #内置方法
-class SiteURL(tornado.web.UIModule):
-	def render(self,path):
-		return C('siteurl') + "/static/" + path
-
 class Config(tornado.web.UIModule):
 	def render(self,key):
 		return C(key)
@@ -33,11 +29,3 @@ class Config(tornado.web.UIModule):
 class GetClassifyName(tornado.web.UIModule):
 	def render(self,key):
 		return db.get_clsfbyid(key)
-
-#导入所有模块
-
-sys.path.append("module")
-
-for it in os.listdir(cur_dir() + "module"):
-		name = it.split('.')[0]
-		__import__(name,globals(),locals(),['*'])

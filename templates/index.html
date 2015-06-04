@@ -16,8 +16,13 @@
 <!-- main -->
 <div class="clear"></div>
 <div class="msdn">
-	<a href="/">上一页</a>
-	<a href="/">下一页</a>
+	{% if frontpage >= 0 %}
+	<a href="/page/{{ frontpage }}">上一页</a>
+	{% end %}
+
+	{% if nextpage > 0 %}
+	<a href="/page/{{ nextpage }}">下一页</a>
+	{% end %}
 </div>
 
 {% module Footer() %}

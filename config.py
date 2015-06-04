@@ -11,6 +11,7 @@ options = {
 	'templates' : "templates/",
 	'admin' 	: "admin/",
 	'upload' 	: "upload/",
+	'pagecount' : 5,
 
 	'db_path' : 'db/data.db',
 	'split_sign' : '[split_sign]',

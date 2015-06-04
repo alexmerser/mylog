@@ -52,6 +52,12 @@ class AdminHandler(BaseHandler):
 
 				self.render(tmp_dir("admin/%s.html" % page),guests = db.get_guest())
 
+			#留言管理
+			elif page == "links":
+
+				self.render(tmp_dir("admin/%s.html" % page),links = db.get_links())
+
+
 			#返回自定义页面
 			else:
 				self.render(tmp_dir("admin/%s.html" % page))
@@ -128,6 +134,34 @@ class AdminHandler(BaseHandler):
 			db.del_guest(id)
 
 			self.redirect("/admin/%s" % page)
+
+
+		#添加链接
+		elif m == "add_links":
+
+			url = self.get_argument("url" ,"")
+			title = self.get_argument("title" ,"")
+
+			if url == "" or title == "":
+				self.redirect("/login")
+
+			db.add_link(title,url)
+
+			self.redirect("/admin/%s" % page)
+
+
+		#删除链接
+		elif m == "del_links":
+
+			id = self.get_argument("id" ,"")
+
+			if id == "":
+				self.redirect("/login")
+
+			db.del_link(id)
+
+			self.redirect("/admin/%s" % page)
+
 
 		else:
 			self.redirect("/login")

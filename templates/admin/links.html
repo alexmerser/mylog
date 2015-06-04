@@ -78,15 +78,42 @@
 		</div>
 		<div class="span9">
 		
-		<form method="post" action="/admin/index">
-			<fieldset>
-				<input type="hidden" name="m" value="add_article"> 
-				<input type="text" class="span8"name="title" placeholder="文章标题"></br>
-				<textarea rows="15" class="span8" name="content">文章内容</textarea></br>
-				<button type="submit" class="btn" style="float:left;margin-right:50px;">发表</button>
-				<h5 style="margin-top:7px;">提醒：分页符为[split_sign]</h5>
-			</fieldset>
+
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>标题</th>
+					<th>链接</th>
+					<th>删除</th>
+				</tr>
+			</thead>
+				<tbody>
+					{% for it in links %}
+					<tr>
+					<td>{% raw it[1] %}</td>
+					<td>{% raw it[2] %}</td>
+
+					<td>
+					<form style="margin-bottom:0;" method="post" action="/admin/links">
+						<input type="hidden" name="m" value="del_links"> 
+						<input type="hidden" name="id" value="{% raw it[0] %}"> 
+						<button type="submit" class="btn">删除</button>
+					</form>
+					</td>
+					</tr>
+					{% end %}
+				</tbody>
+		</table>
+
+		<form  style="margin-left:37px;" method="post" action="/admin/links">
+			<input type="hidden" name="m" value="add_links"> 
+			<div class="row">
+				<div class="span3"><input type="text" name="title" placeholder="标题"></div>
+				<div class="span3"><input type="text" name="url" placeholder="URL"></div>
+				<div class="span3"><button type="submit" class="btn" >添加</button></div>
+			</div>
 		</form>
+
 		
 		<div class="copyrights">Collect from Floyd's Blog'</div>
 		

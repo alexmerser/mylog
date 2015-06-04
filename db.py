@@ -6,6 +6,7 @@ from utils import *
 g_article  = {}
 g_comment  = {}
 g_guest = []
+g_link = []
 
 #获得归档列表
 def get_archives():
@@ -30,7 +31,7 @@ def get_archives():
 	return archives
 
 
-#获取数据库中得信息
+#获取所有文章
 def get_article():
 	articles = g_article.values()
 	articles.sort(key = lambda x : x[0],reverse = True)
@@ -41,6 +42,36 @@ def get_article():
 		articles[i][2] = articles[i][2].split(C('split_sign'))
 
 	return articles
+
+#得到最大页数 
+def get_maxpages():
+	return len(g_article) / C("pagecount")
+
+
+#按页数获取文章
+def get_atcbypage(pageid):
+
+	articles = get_article()
+
+	pageid = int(pageid)
+
+	if pageid == 0:
+		begin = 0
+	else:
+		begin = ( pageid ) * C("pagecount")
+
+	end = (pageid + 1) * C("pagecount")
+
+	if end > len(articles) - 1:
+		end = len(articles)
+
+	if begin > len(articles) - 1:
+		return []
+
+	articles = articles[begin:end]
+
+	return articles
+
 
 #添加文章
 def add_article(title,content):
@@ -156,6 +187,40 @@ def del_guest(id):
 
 	init_guest()
 
+#获取链接
+def get_links():
+	return g_link
+
+#添加链接
+def add_link(title,url):
+
+	db = connectdb()
+
+	sql = 'insert into link values(null,%s,%s)' % (title,url)
+
+	db.execute(sql)
+	db.commit()
+
+	closedb(db)
+
+	init_link()
+
+
+#删除链接
+def del_link(id):
+
+	db = connectdb()
+
+	sql = 'delete from link where id=%s' % id
+
+	db.execute(sql)
+	db.commit()
+
+	closedb(db)
+
+	init_link()
+
+
 
 #数据库初始化相关
 def init_article():
@@ -210,6 +275,23 @@ def init_guest():
 	
 	closedb(db)
 
+
+#初始化留言
+def init_link():
+
+	global g_link
+	
+	db = connectdb()
+
+	g_link = []
+
+	result = db.execute("select * from link")
+
+	for row in result:
+		g_link.append(row)
+	
+	closedb(db)
+
 #打开和关闭数据库链接
 def connectdb():
 	
@@ -226,6 +308,7 @@ def initdb():
 		init_article()
 		init_comment()
 		init_guest()
+		init_link()
 
 		return True
 	except:

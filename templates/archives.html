@@ -3,7 +3,7 @@
 {% for year in years %}
 <div class="guidang">
 	
-	<h1>2015年</h1>
+	<h1>{{ year }}年</h1>
 	{% for it in archives[year] %}
 	<ul class="ul_gd">
 		<li><span>{{ it[3] }}</span><a href="/article/{{ it[0] }}">{% raw it[1] %}</a></li>

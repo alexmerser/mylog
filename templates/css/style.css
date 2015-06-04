@@ -7,8 +7,8 @@ body
 }
 .top_bg 
 {
-	height:260px;
-	background:url(../images/banner.jpg) no-repeat;
+	height:0px;
+	/*background:url(../images/banner.jpg) no-repeat;*/
 }
 .top 
 {
@@ -23,6 +23,11 @@ body
 	height:122;
 	display:block;
 	margin:0 auto;
+}
+
+.span_bt1 a
+{
+	font-weight: bold;
 }
 
 .top span 
@@ -46,11 +51,11 @@ body
 }
 .menu 
 {
+	margin-top: 0;
 	height:54px;
 	line-height:54px;
 	text-align:center;
 	border-bottom:1px solid #f6f6f6;
-	margin-top:20px;
 	font-size:16px;
 	color:#000000;
 }
@@ -93,6 +98,8 @@ body
 }
 .span_bt1 a
 {
+	color: #333;
+	font-family: 'Noto Serif', 'Hiragino Sans GB', 'Microsoft Yahei', serif;
 	font-size:30px;
 }
 .article
@@ -112,6 +119,7 @@ body
 .ul_main_btm 
 {
 	display:block;
+	padding-left: 0;
 	padding-bottom:15px;
 	margin-top:30px;
 	line-height:30px;
@@ -119,8 +127,30 @@ body
 	overflow:hidden;
 	width:970px;
 }
+.ul_main_btm a:hover 
+{
+	color:#FF0000;
+	text-decoration:none;
+}
+.ul_main_btm a:active 
+{
+	color: #333333;text-decoration: none;
+}
+.ul_main_btm ol, ul 
+{
+	list-style:none;
+}
+.ul_main_btm a 
+{	
+	text-decoration:none;
+	color:#333333;
+	font-size:12px;
+	font-family:微软雅黑;
+}
 .ul_main_btm li 
 {
+
+	text-decoration:none;
 	float:left;
 	line-height:35px;
 	margin-right:20px;
@@ -161,8 +191,8 @@ body
 DIV.msdn 
 {
 	TEXT-ALIGN: right;
-	 COLOR: #666666;
-	margin:50px 0;
+	COLOR: #666666;
+	margin:20px 0;
 	padding:0 45px;
 }
 DIV.msdn A 
@@ -193,8 +223,15 @@ DIV.msdn SPAN.current
 
 .footer 
 {
+
+	width:900px;
+	overflow:hidden;
+	margin:0 auto;
+	background:#FFFFFF;
+	border-left:1px solid #ebebeb;
+	border-top:1px solid #ebebeb;
+	border-right:1px solid #ebebeb;
 	height:73px;
-	background:#3c3c3c;
 	text-align:center;
 	padding-top:15px;
 }
@@ -202,17 +239,14 @@ DIV.msdn SPAN.current
 {
 	line-height:28px;
 	font-size:14px;
-	color:#FFFFFF;
 }
 .footer a 
 {
 	font-size:14px;
-	color:#FFFFFF;
 	padding:0 15px;
 }
 .footer a:hover 
 {
-	color:#FF0000;
 }
 
 .pinglun 
@@ -325,12 +359,16 @@ DIV.msdn SPAN.current
 	color:#000000;
 }
 .ul_gd 
-{}
+{
+	padding: 0px;
+	margin: 0px;
+}
 .ul_gd li 
 {
 	line-height:50px;
 	border-bottom:1px solid #eeeeee;
 }
+
 .ul_gd li a,.ul_gd li a:visited 
 {
 	font-size:16px;
@@ -342,6 +380,7 @@ DIV.msdn SPAN.current
 }
 .ul_gd li span 
 {
+	font-size: 13px;
 	float:right;
 	color:#999999;
 }
@@ -549,4 +588,7 @@ DIV.msdn SPAN.current
 	line-height:24px;
 	padding:0 5px;
 }
-
+.footer p
+{
+	margin: 0;
+}

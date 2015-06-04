@@ -18,6 +18,6 @@ Visit http://localhost/
 
 ToDo
 ---
-* Design Background.
+* ~~Design Background.~~
+* ~~Add Markdown Support.~~
 * Add SSL Support.
-* Add Markdown Support.

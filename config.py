@@ -3,7 +3,7 @@
 options = {
 	'siteurl'	 : "http://127.0.0.1",
 
-	'blogname'   : "橘生淮北",
+	'blogname'   : "Mylog",
 	'nickname'   : "floyd",
 	'email'      : "root#7c00.org",
 	'descript'   : "要么庸俗，要么孤独。",

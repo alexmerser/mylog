@@ -16,6 +16,9 @@ class MainHandler(tornado.web.RequestHandler):
 		
 		articlelist = db.get_atcbypage(page)
 			
+		for i in range(0,len(articlelist)):
+			articlelist[i][3] = articlelist[i][3].split(' ')[0]
+
 		self.render(tmp_dir("index.html"),\
 		articlelist = articlelist,
 		pageid 	 = 0,
@@ -27,19 +30,15 @@ class ArticleHandler(tornado.web.RequestHandler):
 
 	def get(self,id):
 		id = int(id)
+
+		article = db.get_atcbyid(id)
+
+		article[3] = article[3].split(' ')[0]
+
 		self.render(tmp_dir("article.html"),\
-		article = db.get_atcbyid(id),
+		article = article,
 		comments = db.get_commbyid(id),
 		csize = len(db.get_commbyid(id)))
-
-#页码页
-class PageHandler(tornado.web.RequestHandler):
-
-	def get(self,pageid):
-
-		self.render(tmp_dir("index.html"),\
-		pageid 	 = pageid,
-		article = db.get_atcbyid(pageid))
 
 #留言页
 class GuestHandler(tornado.web.RequestHandler):
@@ -52,5 +51,12 @@ class GuestHandler(tornado.web.RequestHandler):
 class ArchivesHandler(tornado.web.RequestHandler):
 
 	def get(self):
+
 		archives = db.get_archives()
-		self.render(tmp_dir("archives.html"),archives = archives,years = archives.keys())
+		years = archives.keys()
+		for year in years:
+
+			for i in range(0,len(archives[year])):
+				archives[year][i][3] = archives[year][i][3].split(' ')[0]
+
+		self.render(tmp_dir("archives.html"),archives = archives,years = years)

@@ -3,8 +3,6 @@ import sqlite3
 import time
 from utils import *
 
-db = 0
-
 g_article  = {}
 g_comment  = {}
 g_guest = []
@@ -18,7 +16,7 @@ def get_archives():
 
 		it = g_article[key]
 
-		date = it[4]
+		date = it[3]
 
 		date = date.split("-")
 
@@ -44,6 +42,7 @@ def get_article():
 
 	return articles
 
+#添加文章
 def add_article(title,content):
 
 	date = GetNowTime() 
@@ -60,6 +59,7 @@ def add_article(title,content):
 
 	init_article()
 
+#更新文章
 def update_article(id,title,content):
 
 	date = GetNowTime() 
@@ -77,7 +77,7 @@ def update_article(id,title,content):
 
 	init_article()
 
-
+#删除文章
 def del_article(id):
 
 	db = connectdb()
@@ -110,10 +110,51 @@ def get_commbyid(id):
 	else:
 		return []
 
+#获取所有留言
+def get_comments():
+
+	comments = []
+
+	if len(g_comment) > 0:
+
+		tmp = g_comment.values()[0]
+		for it in tmp:
+			comments.append(list(it))
+
+	return comments
+
+#删除评论
+def del_comment(id):
+
+	db = connectdb()
+
+	sql = 'delete from comment where id=%s' % id
+
+	db.execute(sql)
+	db.commit()
+
+	closedb(db)
+
+	init_comment()
+
 #获得留言
 def get_guest():
 
 	return g_guest
+
+#删除留言
+def del_guest(id):
+
+	db = connectdb()
+
+	sql = 'delete from guest where id=%s' % id
+
+	db.execute(sql)
+	db.commit()
+
+	closedb(db)
+
+	init_guest()
 
 
 #数据库初始化相关
@@ -173,7 +214,7 @@ def init_guest():
 def connectdb():
 	
 	return sqlite3.connect(cur_dir()+C("db_path"))
-		
+	
 def closedb(db):
 	
 	db.close()

@@ -27,14 +27,15 @@ function appendText(w){
 	</div>
 
 	<div class="clear"></div>
-	<div class="ly_nr">
-		<img src="{{ static_url("images/ly_img.jpg") }}" width="50" height="50" class="img_ly" />
-		<div class="ly_nr_r">
-		<textarea name="" cols="" rows="" class="text_ly"></textarea>
-		<a href="#" class="ly_tx"></a>
-		<a href="#" class="a_fb" title="发布"></a>
-		</div>
-	</div>
+
+	<form class="guestboard" method="post" action="/guest">
+		<input type="hidden" name="m" value="add_guests"> 
+		<input type="text" name="name" placeholder="昵称">
+		<input type="text" name="mail" placeholder="E-Mail">
+		<input type="text" name="url" placeholder="URL">
+		<textarea name="" cols="103" rows="10" ></textarea>
+		<button type"submit">提交</button>
+	</form>
 	
 	</div>
 <!-- main -->

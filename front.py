@@ -40,12 +40,40 @@ class ArticleHandler(tornado.web.RequestHandler):
 		comments = db.get_commbyid(id),
 		csize = len(db.get_commbyid(id)))
 
+	def post(self,id):
+
+		m = self.get_argument("m","")
+
+		name = self.get_argument("name","")
+		mail = self.get_argument("mail","")
+		url = self.get_argument("url","")
+		content = self.get_argument("url","")
+
+		if m == "add_comments":
+			db.add_comment(id,name,mail,url,content)
+
+		self.redirect("/article/%s" % id)
+
 #留言页
 class GuestHandler(tornado.web.RequestHandler):
 
 	def get(self):
 
 		self.render(tmp_dir("guest.html"),guests = db.get_guest())
+
+	def post(self):
+
+		m = self.get_argument("m","")
+
+		name = self.get_argument("name","")
+		mail = self.get_argument("mail","")
+		url = self.get_argument("url","")
+		content = self.get_argument("url","")
+
+		if m == "add_guests":
+			db.add_guest(name,mail,url,content)
+
+		self.redirect("/guests")
 
 #归档页
 class ArchivesHandler(tornado.web.RequestHandler):

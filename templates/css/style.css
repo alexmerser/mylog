@@ -125,7 +125,7 @@ body
 	line-height:30px;
 	border-bottom:1px dashed #e4e3e3;
 	overflow:hidden;
-	width:970px;
+	width:770px;
 }
 .ul_main_btm a:hover 
 {
@@ -270,7 +270,7 @@ DIV.msdn SPAN.current
 	font-size:14px;
 	padding:0 5px;
 	color:#707070;
-	width:970px;
+	width:770px;
 }
 .btn_fb 
 {
@@ -288,8 +288,11 @@ DIV.msdn SPAN.current
 }
 .ul_pl 
 {
+	width: 650px;
+	padding: 0;
 	display:block;
-	margin-top:30px;
+	margin-top:70px;
+	margin-bottom: 50px;
 	overflow:hidden;
 }
 .ul_pl li 
@@ -308,14 +311,17 @@ DIV.msdn SPAN.current
 	margin-right:10px; 
 	margin-top:10px;
 }
-
+.ul_pl p
+{
+	margin: 0;
+}
 .ul_pl li p 
 {
 	color:#707070;
 	display:block;
 	float:left;
 	display:block;
-	width:650px;
+	width:450px;
 }
 .ul_pl li b 
 {
@@ -394,7 +400,7 @@ DIV.msdn SPAN.current
 
 .liuyan 
 {
-	width:970px;
+	width:770px;
 	overflow:hidden;
 	padding:0 45px;
 	margin-top:20px;
@@ -407,7 +413,7 @@ DIV.msdn SPAN.current
 }
 .liuyan_1 
 {
-	width:940px;
+	width:740px;
 	overflow:hidden;
 	border-top:1px solid #dddddd;
 	padding:15px;
@@ -415,7 +421,7 @@ DIV.msdn SPAN.current
 }
 .liuyan_1_r 
 {
-	width:875px;
+	width:675px;
 	overflow:hidden;
 	float:right;
 }
@@ -449,7 +455,7 @@ DIV.msdn SPAN.current
 	padding:15px 0;
 	border-top:1px solid #dddddd;
 	border-bottom:1px solid #dddddd;
-	width:970px;
+	width:770px;
 	text-align:right;
 }
 .ly_page a 
@@ -598,4 +604,29 @@ DIV.msdn SPAN.current
 .footer p
 {
 	margin: 0;
+}
+.guestboard
+{
+	width: 680px;
+	margin-top:20px;
+}
+.guestboard input
+{
+	width: 192px;
+	margin-right:20px;
+}
+.guestboard textarea
+{
+	margin-top:20px;
+	margin-bottom:0px;
+	border:1px solid #ebebeb;
+}
+.guestboard button
+{
+	margin-top:20px;
+	margin-bottom:30px;
+	margin-right: 40px;
+	float: right;
+	width: 60px;
+	height: 30px
 }

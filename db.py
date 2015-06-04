@@ -154,6 +154,20 @@ def get_comments():
 
 	return comments
 
+#添加评论
+def add_comment(pid,name,mail,url,content):
+
+	db = connectdb()
+	date = GetNowTime() 
+	sql = 'insert into comment values("%s",null,"%s","%s","%s","%s","%s")' % (pid,name,mail,url,content,date)
+
+	db.execute(sql)
+	db.commit()
+
+	closedb(db)
+
+	init_guest()
+
 #删除评论
 def del_comment(id):
 
@@ -172,6 +186,20 @@ def del_comment(id):
 def get_guest():
 
 	return g_guest
+
+#添加留言
+def add_guest(name,mail,url,content):
+
+	db = connectdb()
+	date = GetNowTime() 
+	sql = 'insert into guest values(null,"%s","%s","%s","%s","%s")' % (name,mail,url,content,date)
+
+	db.execute(sql)
+	db.commit()
+
+	closedb(db)
+
+	init_guest()
 
 #删除留言
 def del_guest(id):

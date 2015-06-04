@@ -27,12 +27,15 @@
 <!-- main -->
 <div class="pinglun">
 	<span class="span_pl">评论({{ csize }})</span>
-	<div class="ly_nr">
-		<div class="ly_nr_r">
-		<textarea name="" cols="" rows="" class="text_ly"></textarea>
-		<a href="#" class="a_fb" title="发布"></a>
-		</div>
-	</div>
+	<form class="guestboard" method="post" action="/article/{{ article[0] }}">
+		<input type="hidden" name="m" value="add_comments"> 
+		<input type="hidden" name="id" value="{{ article[0] }}"> 
+		<input type="text" name="name" placeholder="昵称">
+		<input type="text" name="mail" placeholder="E-Mail">
+		<input type="text" name="url" placeholder="URL">
+		<textarea name="" cols="103" rows="10" ></textarea>
+		<button type"submit">提交</button>
+	</form>
 	<div class="clear"></div>
 	<ul class="ul_pl">
 		{% for it in comments %}

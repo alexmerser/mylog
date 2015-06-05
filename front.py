@@ -73,7 +73,7 @@ class GuestHandler(tornado.web.RequestHandler):
 		if m == "add_guests":
 			db.add_guest(name,mail,url,content)
 
-		self.redirect("/guests")
+		self.redirect("/guest")
 
 #归档页
 class ArchivesHandler(tornado.web.RequestHandler):

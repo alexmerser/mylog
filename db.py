@@ -166,7 +166,7 @@ def add_comment(pid,name,mail,url,content):
 
 	closedb(db)
 
-	init_guest()
+	init_comment()
 
 #删除评论
 def del_comment(id):

@@ -197,3 +197,30 @@
 
 		{% end %}
 	}
+
+接口
+---
+
+**1.提交评论**
+
+	URL: /article/{{ 文章id }}
+	类型: POST
+	参数:
+		m         -> "add_comments"
+		id        -> 文章ID
+		name      -> 昵称
+		mail      -> 邮件
+		url       -> url
+		content   -> 内容
+
+**2.提交留言**
+
+	URL: /guest
+	类型: POST
+	参数:
+		m         -> "add_guests"
+		name      -> 昵称
+		mail      -> 邮件
+		url       -> url
+		content   -> 内容
+

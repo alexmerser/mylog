@@ -1,6 +1,42 @@
 前端设计手册
 ===
 
+<ul>
+<li>
+	<a href="#结构">结构</a>
+	<ul>
+		<li><a href="#1.文件">1.文件</a></li>
+		<li><a href="#2.路由">2.路由</a></li>
+	</ul>
+</li>
+<li>
+	<a href="#结构">约定</a>
+	<ul>
+		<li><a href="#1.获取静态文件">1.获取静态文件</a></li>
+		<li><a href="#2.页面模板">2.页面模板</a></li>
+		<li><a href="#3.HTTP异常页面">3.HTTP异常页面</a></li>
+		<li><a href="#3.HTTP异常页面">4.变量引用方法</a></li>
+		<li><a href="#3.HTTP异常页面">5.内置模板方法</a></li>
+	</ul>
+</li>
+<li>
+	<a href="#结构">变量</a>
+	<ul>
+		<li><a href="#index.html">index.html</a></li>
+		<li><a href="#article.html">article.html</a></li>
+		<li><a href="#index.html">guest.html</a></li>
+		<li><a href="#archives.html">archives.html</a></li>
+	</ul>
+</li>
+<li>
+	<a href="#结构">接口</a>
+	<ul>
+		<li><a href="#1.提交评论">1.提交评论</a></li>
+		<li><a href="#2.提交留言">2.提交留言</a></li>
+	</ul>
+</li>
+</ul>
+
 结构
 ---
 

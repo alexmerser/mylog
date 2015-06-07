@@ -28,7 +28,7 @@
 
 约定
 ---
-**1.获取静态页面**
+**1.获取静态文件**
 
 如引用js、css、jpg等文件，使用模板`{{ static_url(path) }}`来转换为静态路径，如下代码
 
@@ -74,13 +74,20 @@
 		<a>当前页数 ：{{ pageid }}</a>
 	}
 
+**5.内置模板方法**
+
+为了方便获取配置变量等功能，内置了一些模板方法，描述和使用方法如下。
+
+	获取博客名称( config.py中的options['blogname'] )
+	{% module Config("blogname") %}
+
 变量
 ---
 **index.html**
 
 	articles[二维列表]
 	{
-		文章列表，一级列表为文章，二级列表为文章内容
+		文章列表
 
 		{% for it in articles %}
 			文章ID{% raw it[0] %}</br>
@@ -112,5 +119,81 @@
 
 		{% if nextpage > 0 %}
 			<a href="/page/{{ nextpage }}">下一页</a>
+		{% end %}
+	}
+
+**article.html**
+
+	article[列表]
+	{
+		文章内容列表
+
+		文章ID{{ article[0] }}</br>
+		文章标题{{ article[1] }}</br>
+		文章内容{{ article[2] }}</br>
+		发表时间{{ article[3] }}</br>
+	}
+
+	comments[二维列表]
+	{
+		当前文章评论列表
+		{% for it in comments %}
+			文章ID{{ it[0] }}</br>
+			评论昵称{{ it[1] }}</br>
+			EMAIL{{ it[2] }}</br>
+			URL{{ it[3] }}</br>
+			内容{{ it[4] }}</br>
+			时间{{ it[5] }}</br>
+		{% end %}
+	}
+
+	csize[整数]
+	{
+		当前文章评论数量
+
+		<a>评论数量 : {{ csize }}</a>
+	}
+
+**guest.html**
+
+	guests[列表]
+	{
+		留言内容列表
+
+		{% for it in guests %}
+			留言ID{{ it[0] }}</br>
+			留言昵称{{ it[1] }}</br>
+			EMAIL{{ it[2] }}</br>
+			URL{{ it[3] }}</br>
+			内容{{ it[4] }}</br>
+			时间{{ it[5] }}</br>
+		{% end %}
+	}
+
+**archives.html**
+
+	years[列表]
+	{
+		所有文章年限列表
+
+		{% for year in years %}
+			年份 ：{{ year }}
+		{% end %}
+	}
+
+	archives[归档字典]
+	{
+		与years变量配合使用，获取特定年限的文章列表
+
+		{% for year in years %}
+
+			<h1>{{ year }}年</h1>
+			{% for it in archives[year] %}
+				文章ID{% raw it[0] %}</br>
+				文章标题{% raw it[1] %}</br>
+				文章内容{% raw it[2] %}</br>
+				发表时间{% raw it[3] %}</br>
+			{% end %}
+
 		{% end %}
 	}

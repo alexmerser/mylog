@@ -22,10 +22,10 @@
 <li>
 	<a href="#结构">变量</a>
 	<ul>
-		<li><a href="#index.html">index.html</a></li>
-		<li><a href="#article.html">article.html</a></li>
-		<li><a href="#index.html">guest.html</a></li>
-		<li><a href="#archives.html">archives.html</a></li>
+		<li><a href="#indexhtml">index.html</a></li>
+		<li><a href="#articlehtml">article.html</a></li>
+		<li><a href="#guesthtml">guest.html</a></li>
+		<li><a href="#archiveshtml">archives.html</a></li>
 	</ul>
 </li>
 <li>

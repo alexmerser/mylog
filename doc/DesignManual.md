@@ -29,7 +29,7 @@ Templates
 
 	<link type="text/css" rel="stylesheet" href="{{ static_url("css/style.css") }}" />
 
-2.页面模板
+**2.页面模板**
 
 为避免代码重写，提供头部和底部两个模板对象。使用如下代码引用。
 
@@ -38,11 +38,11 @@ Templates
 
 该模块引用功能为将读取footer.html和header.html到页面引用位置。
 
-3.HTTP异常页面
+**3.HTTP异常页面**
 
 现提供403、404、500和503异常的处理页面。例如404页面，命名为[ 404.html ]放置在except目录下即可。
 
-5.变量引用方法
+**4.变量引用方法**
 
 每个模板页将提供相关功能变量在前端引用。如 [ article.html ] 页面，提供表示文章内容的数组变量[ article ]，在前端页面中引用方法为。
 

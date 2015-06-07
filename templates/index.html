@@ -1,7 +1,7 @@
 {% module Header() %}
 <!-- main -->
 <div class="main">
-	{% for it in articlelist %}
+	{% for it in articles %}
 	<span class="atc_name" ><a href="/article/{{ it[0] }}">{% raw it[1] %}</a></span>
 	<div class="article">
 		{% raw it[2][0] %}

@@ -31,7 +31,7 @@ Templates
 
 **2.页面模板**
 
-为避免代码重写，提供头部和底部两个模板对象。使用如下代码引用。
+为避免代码重写，提供头部和底部两个模块对象。使用如下代码引用。
 
 	{% module Header() %}
 	{% module Footer() %}
@@ -46,4 +46,62 @@ Templates
 
 每个模板页将提供相关功能变量在前端引用。如 [ article.html ] 页面，提供表示文章内容的数组变量[ article ]，在前端页面中引用方法为。
 
-	`<div class="article">{{ article[1] }}</div>`
+	<div class="article">{{ article[1] }}</div>
+
+变量类型和python的数据类型一致，一般为变量、列表、字典三种。后文中变量说明将以如下格式表示。
+
+	变量名[类型]
+	{
+		说明
+		使用方法
+	}
+
+例如index.html提供的pageid当前页ID变量。描述为
+
+	pageid[整数]
+	{
+		当前页ID变量
+
+		<a>当前页数 ：{{ pageid }}</a>
+	}
+
+模板变量
+---
+**index.html**
+
+	articles[二维列表]
+	{
+		文章列表，一级列表为文章，二级列表为文章内容
+
+		{% for it in articles %}
+			文章ID{% raw it[0] %}</br>
+			文章标题{% raw it[1] %}</br>
+			文章内容{% raw it[2] %}</br>
+			发表时间{% raw it[3] %}</br>
+		{% end %}
+	}
+
+	pageid[整数]
+	{
+		当前页ID变量
+
+		<a>当前页数 ：{{ pageid }}</a>
+	}
+
+	frontpage[整数]
+	{
+		上一页ID
+
+		{% if frontpage >= 0 %}
+			<a href="/page/{{ frontpage }}">上一页</a>
+		{% end %}
+	}
+
+	nextpage[整数]
+	{
+		下一页ID
+
+		{% if nextpage > 0 %}
+			<a href="/page/{{ nextpage }}">下一页</a>
+		{% end %}
+	}

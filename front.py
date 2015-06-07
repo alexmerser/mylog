@@ -20,7 +20,7 @@ class MainHandler(tornado.web.RequestHandler):
 			articlelist[i][3] = articlelist[i][3].split(' ')[0]
 
 		self.render(tmp_dir("index.html"),\
-		articlelist = articlelist,
+		articles = articlelist,
 		pageid 	 = 0,
 		frontpage = int(page) - 1,
 		nextpage = int(page) + 1 if db.get_maxpages() > int(page) else 0)

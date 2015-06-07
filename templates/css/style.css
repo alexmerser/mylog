@@ -25,7 +25,7 @@ body
 	margin:0 auto;
 }
 
-.span_bt1 a
+.atc_name a
 {
 	font-weight: bold;
 }
@@ -85,7 +85,7 @@ body
 	font-size:30px;
 }
 
-.span_bt1 
+.atc_name 
 {
 	padding-bottom : 5px;
 	margin-bottom : 25px;
@@ -96,7 +96,7 @@ body
 	font-size:30px;
 	border-bottom:1px dashed #e5e5e5;
 }
-.span_bt1 a
+.atc_name a
 {
 	color: #333;
 	font-family: 'Noto Serif', 'Hiragino Sans GB', 'Microsoft Yahei', serif;
@@ -255,7 +255,7 @@ DIV.msdn SPAN.current
 	overflow:hidden;
 	margin-top:20px;
 }
-.span_pl 
+.span_cmt 
 {
 	display:block;
 	font-size:16px;
@@ -286,7 +286,7 @@ DIV.msdn SPAN.current
 	margin-top:15px;
 	border:none;
 }
-.ul_pl 
+.ul_comment 
 {
 	width: 650px;
 	padding: 0;
@@ -295,14 +295,14 @@ DIV.msdn SPAN.current
 	margin-bottom: 50px;
 	overflow:hidden;
 }
-.ul_pl li 
+.ul_comment li 
 {
 	line-height:40px;
 	border-top:1px solid #ebebeb;
 	clear:both;
 }
 
-.ul_pl img
+.ul_comment img
 {
 	width:20;
 	height:20;
@@ -311,11 +311,11 @@ DIV.msdn SPAN.current
 	margin-right:10px; 
 	margin-top:10px;
 }
-.ul_pl p
+.ul_comment p
 {
 	margin: 0;
 }
-.ul_pl li p 
+.ul_comment li p 
 {
 	color:#707070;
 	display:block;
@@ -323,7 +323,7 @@ DIV.msdn SPAN.current
 	display:block;
 	width:450px;
 }
-.ul_pl li b 
+.ul_comment li b 
 {
 	font-weight:100;
 	color:#30a476;
@@ -349,7 +349,7 @@ DIV.msdn SPAN.current
 	color:#FF0000;
 }
 
-.guidang 
+.archives 
 {
 	width:710px;
 	margin:30px auto 0;
@@ -358,7 +358,7 @@ DIV.msdn SPAN.current
 	padding-left:40px;
 	padding-right:40px;
 }
-.guidang h1 
+.archives h1 
 {
 	display:block;
 	text-align:center;
@@ -366,32 +366,32 @@ DIV.msdn SPAN.current
 	font-size:30px;
 	color:#000000;
 }
-.ul_gd 
+.ul_archives 
 {
 	padding: 0px;
 	margin: 0px;
 }
-.ul_gd li 
+.ul_archives li 
 {
 	line-height:50px;
 	border-bottom:1px solid #eeeeee;
 }
 
-.ul_gd a
+.ul_archives a
 {
 	font-family: 'Noto Serif', 'Hiragino Sans GB', 'Microsoft Yahei', serif;
 }
 
-.ul_gd li,.ul_gd li a:visited 
+.ul_archives li,.ul_archives li a:visited 
 {
 	font-size:16px;
 	color:#000000;
 }
-.ul_gd li a:hover 
+.ul_archives li a:hover 
 {
 	color:#FF0000;
 }
-.ul_gd li span 
+.ul_archives li span 
 {
 	font-size: 18px;
 	float:right;
@@ -551,7 +551,7 @@ DIV.msdn SPAN.current
 	padding-bottom:10px;
 	overflow:hidden
 } 
-.k_fh .span_pl
+.k_fh .span_cmt
 {
 	font-size:12px
 }

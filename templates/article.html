@@ -12,7 +12,7 @@
 
 <!-- main -->
 <div class="main">
-	<span class="span_bt1"><a>{{ article[1] }}</a></span>
+	<span class="atc_name"><a>{{ article[1] }}</a></span>
 	<div class="article">
 		{% raw article[2] %}
 	</div>
@@ -26,7 +26,7 @@
 
 <!-- main -->
 <div class="comments">
-	<span class="span_pl">评论({{ csize }})</span>
+	<span class="span_cmt">评论({{ csize }})</span>
 	<form class="guestboard" method="post" action="/article/{{ article[0] }}">
 		<input type="hidden" name="m" value="add_comments"> 
 		<input type="hidden" name="id" value="{{ article[0] }}"> 
@@ -37,11 +37,10 @@
 		<button type"submit">提交</button>
 	</form>
 	<div class="clear"></div>
-	<ul class="ul_pl">
+	<ul class="ul_comment">
 		{% for it in comments %}
 		<li><img src="{{ static_url("images/pl_img3.jpg") }}" />
 			<p><b>{{ it[2] }}</b>：{{ it[5] }}</p>
-			<a class="a_hf" onclick="appendText(h6)">回复</a>
 		<div id="h6"> </div>
 		</li>
 		{% end %}

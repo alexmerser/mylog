@@ -116,7 +116,7 @@ body
 	color:#333333;
 	line-height:30px;
 }
-.ul_main_btm 
+.article_btm 
 {
 	display:block;
 	padding-left: 0;
@@ -127,27 +127,27 @@ body
 	overflow:hidden;
 	width:770px;
 }
-.ul_main_btm a:hover 
+.article_btm a:hover 
 {
 	color:#FF0000;
 	text-decoration:none;
 }
-.ul_main_btm a:active 
+.article_btm a:active 
 {
 	color: #333333;text-decoration: none;
 }
-.ul_main_btm ol, ul 
+.article_btm ol, ul 
 {
 	list-style:none;
 }
-.ul_main_btm a 
+.article_btm a 
 {	
 	text-decoration:none;
 	color:#333333;
 	font-size:12px;
 	font-family:微软雅黑;
 }
-.ul_main_btm li 
+.article_btm li 
 {
 
 	text-decoration:none;
@@ -155,19 +155,19 @@ body
 	line-height:35px;
 	margin-right:20px;
 }
-.ul_main_btm li span 
+.article_btm li span 
 {
 	font-size:12px;
 	line-height:35px;
 	color:#898989;
 	display:block;
 }
-.ul_main_btm li a,.ul_main_btm li a:visited 
+.article_btm li a,.article_btm li a:visited 
 {
 	font-size:12px;
 	color:#898989;
 }
-.ul_main_btm li a:hover 
+.article_btm li a:hover 
 {
 	color:#FF0000;
 }
@@ -249,7 +249,7 @@ DIV.msdn SPAN.current
 {
 }
 
-.pinglun 
+.comments 
 {
 	padding:0 45px;
 	overflow:hidden;
@@ -398,7 +398,7 @@ DIV.msdn SPAN.current
 	color:#999999;
 }
 
-.liuyan 
+.guests 
 {
 	width:770px;
 	overflow:hidden;
@@ -411,7 +411,7 @@ DIV.msdn SPAN.current
 	line-height:50px;
 	font-size:30px;
 }
-.liuyan_1 
+.guest_text 
 {
 	width:740px;
 	overflow:hidden;
@@ -419,13 +419,13 @@ DIV.msdn SPAN.current
 	padding:15px;
 	margin-top:10px;
 }
-.liuyan_1_r 
+.guest_text_r 
 {
 	width:675px;
 	overflow:hidden;
 	float:right;
 }
-.liuyan_1_r span 
+.guest_text_r span 
 {
 	display:block;
 	line-height:21px;
@@ -439,35 +439,16 @@ DIV.msdn SPAN.current
 	color:#30a476;
 	cursor:pointer;
 }
-.liuyan_1_r p 
+.guest_text_r p 
 {
 	line-height:21px;
 	color:#333333;
 }
-.liuyan_1 img 
+.guest_text img 
 {
 	display:block;
 	float:left;
 	border:1px solid #ececec;
-}
-.ly_page 
-{
-	padding:15px 0;
-	border-top:1px solid #dddddd;
-	border-bottom:1px solid #dddddd;
-	width:770px;
-	text-align:right;
-}
-.ly_page a 
-{
-	color:#777777;
-	padding:4px 7px;
-	margin:0 5px;
-}
-.ly_page a:hover 
-{
-	color:#dd3322;
-	border:1px solid #cccccc;
 }
 #on 
 {

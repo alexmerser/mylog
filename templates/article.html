@@ -16,7 +16,7 @@
 	<div class="article">
 		{% raw article[2] %}
 	</div>
-	<ul class="ul_main_btm">
+	<ul class="article_btm">
 	<li><span class="span1_main">{{ article[3] }}</span></li>
 	<li><span class="span2_main">{{ article[4] }}</span></li>
 		
@@ -25,7 +25,7 @@
 </div>
 
 <!-- main -->
-<div class="pinglun">
+<div class="comments">
 	<span class="span_pl">评论({{ csize }})</span>
 	<form class="guestboard" method="post" action="/article/{{ article[0] }}">
 		<input type="hidden" name="m" value="add_comments"> 

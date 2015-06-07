@@ -9,22 +9,18 @@ function appendText(w){
 
 </script>
 <!-- main -->
-<div class="liuyan">
+<div class="guests">
 	<span class="span_gwly">给我留言</span>
 	{% for it in guests %}
-	<div class="liuyan_1">
+	<div class="guest_text">
 		<img src="{{ static_url("images/ly_img1.jpg") }}" width="50" height="50" />
-		<div class="liuyan_1_r">
+		<div class="guest_reply">
 			<span>{{ it[1] }}</span>
 			<p>{{ it[4] }}</p>
-			<a class="a_lyb_hf" onclick="appendText(h1)">回复</a>
 			<div id="h1"></div>
 		</div>
 	</div>
 	{% end %}
-	<div class="ly_page">
-		<a href="#">1</a><a href="#">2</a><a href="#" id="on">3</a><a href="#">4</a><a href="#">5</a>...<a href="#">408</a>
-	</div>
 
 	<div class="clear"></div>
 

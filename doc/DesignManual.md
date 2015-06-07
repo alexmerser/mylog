@@ -1,9 +1,10 @@
 前端设计手册
 ===
 
-目录结构
+结构
 ---
-Templates
+
+**1.文件目录**
 
 	├─css             (存放样式文件)
 	├─except          (存放HTTP异常页面)
@@ -16,6 +17,14 @@ Templates
 	├─footer.html     (底部模板)
 	├─header.html     (头部模板)
 	└─favicon.ico     (网站图标)
+
+**2.路由**
+
+	"/", 				-》	index.html
+	"/page/([^/]*)" 	-》	index.html
+	"/guest" 			-》	guest.html
+	"/archives" 		-》	archives.html
+	"/article/([^/]*)", -》	article.html
 
 约定
 ---
@@ -65,7 +74,7 @@ Templates
 		<a>当前页数 ：{{ pageid }}</a>
 	}
 
-模板变量
+变量
 ---
 **index.html**
 

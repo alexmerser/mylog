@@ -2,6 +2,8 @@ My blog
 ========
 Another lightweight blog cms based on tornado.
 
+About how to [design templates](https://github.com/5loyd/mylog/blob/master/doc/DesignManual.md).
+
 Prequisites
 ---
 * CPython 2.7

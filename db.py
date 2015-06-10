@@ -1,6 +1,8 @@
 ﻿#coding : utf8
 import sqlite3
 import time
+import markdown2
+import copy
 from utils import *
 
 g_article  = {}
@@ -31,7 +33,7 @@ def get_classify():
 	classify = []
 
 	for key in g_classify.keys():
-		classify.append(g_classify[key])
+		classify.append(copy.copy(g_classify[key]))
 
 	return classify
 
@@ -70,7 +72,7 @@ def get_archives():
 
 	for key in g_article.keys():
 
-		it = g_article[key]
+		it = copy.copy(g_article[key])
 
 		date = it[3]
 
@@ -88,13 +90,14 @@ def get_archives():
 
 #获取所有文章
 def get_article():
-	articles = g_article.values()
+	articles = copy.copy(g_article.values())
 	articles.sort(key = lambda x : x[0],reverse = True)
 
 	#将元组转为列表，并切分文章内容
 	for i in range(0,len(articles)):
 		articles[i] = list(articles[i])
 		articles[i][2] = articles[i][2].split(C('split_sign'))
+		articles[i][2][0] = markdown2.markdown(articles[i][2][0])
 
 	return articles
 
@@ -181,10 +184,11 @@ def del_article(id):
 def get_atcbyid(id,isEdit = False):
 
 	#将元组转为列表，合并文章内容
-	atc = g_article[int(id)]
+	atc = copy.copy(g_article[int(id)])
 
 	if isEdit == False:
 		atc[2] = atc[2].replace(C('split_sign'),"")
+		atc[2] = markdown2.markdown(atc[2])
 
 	return atc
 
@@ -192,7 +196,7 @@ def get_atcbyid(id,isEdit = False):
 def get_commbyid(id):
 	
 	if g_comment.has_key(int(id)):
-		return g_comment[int(id)]
+		return copy.copy(g_comment[int(id)])
 	else:
 		return []
 
@@ -203,7 +207,7 @@ def get_comments():
 
 	if len(g_comment) > 0:
 
-		tmp = g_comment.values()[0]
+		tmp = copy.copy(g_comment.values()[0])
 		for it in tmp:
 			comments.append(list(it))
 

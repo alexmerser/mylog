@@ -18,6 +18,7 @@ class MainHandler(tornado.web.RequestHandler):
 			
 		for i in range(0,len(articlelist)):
 			articlelist[i][3] = articlelist[i][3].split(' ')[0]
+			
 
 		self.render(tmp_dir("index.html"),\
 		articles = articlelist,

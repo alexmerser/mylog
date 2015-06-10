@@ -1,7 +1,6 @@
 #coding: utf8
 import tornado.web
 import db
-import markdown2
 from utils import *
 
 # 简单的用户认证实现
@@ -91,8 +90,6 @@ class AdminHandler(BaseHandler):
 
 			if title == "" or content == "" or classify == "":
 				self.redirect("/login")
-
-			content = markdown2.markdown(content)
 
 			db.add_article(title,content,classify)
 

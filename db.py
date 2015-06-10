@@ -7,6 +7,61 @@ g_article  = {}
 g_comment  = {}
 g_guest = []
 g_link = []
+g_classify = {}
+
+#初始化分类
+def init_classify():
+
+	global g_classify
+	
+	db = connectdb()
+
+	g_classify = {}
+
+	result = db.execute("select * from classify")
+	for row in result:
+		row = list(row)
+		g_classify[int(row[0])] = row
+
+	closedb(db)
+
+#获取分类
+def get_classify():
+
+	classify = []
+
+	for key in g_classify.keys():
+		classify.append(g_classify[key])
+
+	return classify
+
+#添加分类
+def add_classify(name):
+
+	db = connectdb()
+
+	sql = 'insert into classify values(null,"%s")' % name
+	db.execute(sql)
+	db.commit()
+
+	closedb(db)
+
+	init_classify()
+
+#删除链接
+def del_classify(id):
+
+	db = connectdb()
+
+	sql = 'delete from classify where id=%s' % id
+
+	db.execute(sql)
+	db.commit()
+
+	closedb(db)
+
+	init_classify()
+
 
 #获得归档列表
 def get_archives():
@@ -74,7 +129,7 @@ def get_atcbypage(pageid):
 
 
 #添加文章
-def add_article(title,content):
+def add_article(title,content,classify):
 
 	date = GetNowTime() 
 
@@ -82,7 +137,7 @@ def add_article(title,content):
 
 	content = Space2Char(content)
 
-	sql = 'insert into article values(null,"%s","%s","%s",0)' % (title,content,date)
+	sql = 'insert into article values(null,"%s","%s","%s","%s")' % (title,content,date,classify)
 	db.execute(sql)
 	db.commit()
 
@@ -333,6 +388,7 @@ def closedb(db):
 def initdb():
 
 	try:
+		init_classify()
 		init_article()
 		init_comment()
 		init_guest()

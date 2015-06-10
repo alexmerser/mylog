@@ -33,6 +33,10 @@ class AdminHandler(BaseHandler):
 
 		#处理请求页面
 		if 1==1:
+
+			if page == "index":
+				self.render(tmp_dir("admin/%s.html" % page),classify = db.get_classify())
+
 			#文章管理
 			if page == "articles":
 				self.render(tmp_dir("admin/%s.html" % page),articles = db.get_article())
@@ -41,7 +45,7 @@ class AdminHandler(BaseHandler):
 			elif page == "update":
 
 				id = self.get_argument("id")
-				self.render(tmp_dir("admin/%s.html" % page),article = db.get_atcbyid(id,True),id = id)
+				self.render(tmp_dir("admin/%s.html" % page),classify = db.get_classify(),article = db.get_atcbyid(id,True),id = id)
 
 			#评论管理
 			elif page == "comments":
@@ -58,6 +62,11 @@ class AdminHandler(BaseHandler):
 
 				self.render(tmp_dir("admin/%s.html" % page),links = db.get_links())
 
+			#分类管理
+
+			elif page == "classify":
+
+				self.render(tmp_dir("admin/%s.html" % page),classify = db.get_classify())
 
 			#返回自定义页面
 			else:
@@ -78,13 +87,14 @@ class AdminHandler(BaseHandler):
 		if m == "add_article":
 			title = self.get_argument("title" ,"")
 			content = self.get_argument("content","")
+			classify = self.get_argument("classify","")
 
-			if title == "" or content == "":
+			if title == "" or content == "" or classify == "":
 				self.redirect("/login")
 
 			content = markdown2.markdown(content)
 
-			db.add_article(title,content)
+			db.add_article(title,content,classify)
 
 			self.redirect("/admin/%s" % page)
 
@@ -162,6 +172,31 @@ class AdminHandler(BaseHandler):
 				self.redirect("/login")
 
 			db.del_link(id)
+
+			self.redirect("/admin/%s" % page)
+
+		#添加分类
+		elif m == "add_classify":
+
+			name = self.get_argument("name" ,"")
+
+			if name == "":
+				self.redirect("/login")
+
+			db.add_classify(name)
+
+			self.redirect("/admin/%s" % page)
+
+
+		#删除链接
+		elif m == "del_classify":
+
+			id = self.get_argument("id" ,"")
+
+			if id == "":
+				self.redirect("/login")
+
+			db.del_classify(id)
 
 			self.redirect("/admin/%s" % page)
 

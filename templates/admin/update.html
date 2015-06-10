@@ -64,6 +64,7 @@
 					<li ><a href="/admin/index">发表文章</a></li>
 					<li ><a href="/admin/articles">文章管理</a></li>
 					<li ><a href="/admin/comments">评论管理</a></li>
+					<li ><a href="/admin/classify">分类管理</a></li>
 					<li ><a href="/admin/guests">留言管理</a></li>
 					<li ><a href="/admin/links">友情链接</a></li>
 					
@@ -82,7 +83,17 @@
 			<fieldset>
 				<input type="hidden" name="id" value="{{ id }}"> 
 				<input type="hidden" name="m" value="update_article"> 
-				<input type="text" class="span8"name="title" value="{{ article[1] }}"></br>
+				<div  style="margin-left:0px;" class="row">
+
+					<div class="span5"><input class="span12" type="text" name="title" placeholder="文章标题" value ="{{ article[1] }}"></br></div>
+					<div class="span2">
+						<select name="classify">
+							{% for it in classify %}
+							<option value ="1">{{ it[1] }}</option>
+							{% end %}
+						</select>
+					</div>
+				</div>
 				<textarea rows="15" class="span8" name="content">{{ article[2] }}</textarea></br>
 				<button type="submit" class="btn" style="float:left;margin-right:50px;">更新</button>
 				<h5 style="margin-top:7px;">提醒：分页符为[split_sign]</h5>

@@ -37,7 +37,11 @@ def cur_dir():
 	elif os.path.isfile(path):
 		return os.path.dirname(path) + '/'
 
-#获取模板路径
+#求模板url
+def template_url(path):
+	return "static/" + path;
+
+#获取静态路径
 def tmp_dir(file):
 	return cur_dir() + C('templates') + file
 

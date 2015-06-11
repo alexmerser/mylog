@@ -389,7 +389,7 @@ def closedb(db):
 	db.close()
 
 #初始化数据库
-def initdb():
+def init():
 
 	try:
 		init_classify()

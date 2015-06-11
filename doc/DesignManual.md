@@ -66,13 +66,13 @@
 ---
 ###1.获取静态文件###
 
-如引用js、css、jpg等文件，使用模板`{{ static_url(path) }}`来转换为静态路径，如下代码
+如引用js、css、jpg等文件，使用模板`{{ template_url(path) }}`来转换为静态路径，如下代码
 
 	<link type="text/css" rel="stylesheet" href="css/style.css" />
 
 应该表示为
 
-	<link type="text/css" rel="stylesheet" href="{{ static_url("css/style.css") }}" />
+	<link type="text/css" rel="stylesheet" href="{{ template_url("css/style.css") }}" />
 
 ###2.页面模板###
 

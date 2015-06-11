@@ -4,12 +4,13 @@ import tornado.ioloop
 import tornado.web
 import threading
 
-from utils import *
 import config
 import module
 import db
 import front
 import manager
+
+from utils import *
 
 #处理404 500等异常
 class BaseHandler(tornado.web.RequestHandler):
@@ -50,7 +51,7 @@ application = tornado.web.Application([
 
 if __name__ == "__main__":
 	
-	if db.initdb() == False:
+	if db.init() == False:
 		print 'Database Initialize Faild!'
 		exit(0)
 

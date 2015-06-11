@@ -7,25 +7,23 @@ import sys
 import db
 import os
 
-class Header(tornado.web.UIModule):
+
+class BaseModule(tornado.web.UIModule):
+	def MyRender(self,file,**args):
+
+		args = dict(args.items()+config.functions.items())
+
+		return self.render_string(file,**args)
+
+class Header(BaseModule):
 	def render(self):
-		return self.render_string(tmp_dir("header.html"))
+		return self.MyRender(tmp_dir("header.html"))
 		
-class Sidebar(tornado.web.UIModule):
+class Sidebar(BaseModule):
 	def render(self):
 		list = db.get_classify()
-		return self.render_string(tmp_dir("sidebar.html"),classify = list)
+		return self.MyRender(tmp_dir("sidebar.html"),classify = list)
 		
-class Footer(tornado.web.UIModule):
+class Footer(BaseModule):
 	def render(self):
-		return self.render_string(tmp_dir("footer.html"))
-
-
-#内置方法
-class Config(tornado.web.UIModule):
-	def render(self,key):
-		return C(key)
-
-class GetClassifyName(tornado.web.UIModule):
-	def render(self,key):
-		return db.get_clsfbyid(key)
+		return self.MyRender(tmp_dir("footer.html"))

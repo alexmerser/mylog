@@ -37,13 +37,22 @@ def cur_dir():
 	elif os.path.isfile(path):
 		return os.path.dirname(path) + '/'
 
-#求模板url
+#求前台模板url
 def template_url(path):
-	return "static/"+ C("tmp_name") + path;
+	return "/static/"+ C("tmp_name") + path;
+
+#求管理模板
+def admin_url(path):
+	return "/static/"+ "admin/" + path;
+
 
 #获取静态路径
 def tmp_dir(file):
 	return cur_dir() + C('templates') + C("tmp_name") + file
+
+#获取管理员路径
+def admin_dir(file):
+	return cur_dir() + C('templates') + "admin/" + file
 
 #文章列表分页
 def split_list(list,num):

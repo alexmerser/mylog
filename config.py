@@ -24,6 +24,7 @@ options = {
 
 functions = {
 	'template_url' : template_url,
+	'admin_url'    : admin_url,
 	'C'			   : C
 
 }

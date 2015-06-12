@@ -3,7 +3,7 @@ import tornado.web
 import db
 from utils import *
 
-# 简单的用户认证实现
+# 简单的用户认证
 class BaseHandler(tornado.web.RequestHandler):
 
 	def get_current_user(self):
@@ -19,8 +19,15 @@ class BaseHandler(tornado.web.RequestHandler):
 			self.set_secure_cookie("user","")
 			return False
 
+	def MyRender(self,file,**args):
+
+		args = dict(args.items()+config.functions.items())
+
+		return self.render(file,**args)
+
+
  
-# 实际业务类实现
+# 后台管理实现
 class AdminHandler(BaseHandler):
 
 	def get(self,page):
@@ -34,42 +41,42 @@ class AdminHandler(BaseHandler):
 		if 1==1:
 
 			if page == "index":
-				self.render(tmp_dir("admin/%s.html" % page),classify = db.get_classify())
+				self.MyRender(admin_dir("%s.html" % page),classify = db.get_classify())
 
 			#文章管理
 			elif page == "articles":
-				self.render(tmp_dir("admin/%s.html" % page),articles = db.get_article())
+				self.MyRender(admin_dir("%s.html" % page),articles = db.get_article())
 
 			#更新文章
 			elif page == "update":
 
 				id = self.get_argument("id")
-				self.render(tmp_dir("admin/%s.html" % page),classify = db.get_classify(),article = db.get_atcbyid(id,True),id = id)
+				self.MyRender(admin_dir("%s.html" % page),classify = db.get_classify(),article = db.get_atcbyid(id,True),id = id)
 
 			#评论管理
 			elif page == "comments":
 
-				self.render(tmp_dir("admin/%s.html" % page),comments = db.get_comments())
+				self.MyRender(admin_dir("%s.html" % page),comments = db.get_comments())
 
 			#留言管理
 			elif page == "guests":
 
-				self.render(tmp_dir("admin/%s.html" % page),guests = db.get_guest())
+				self.MyRender(admin_dir("%s.html" % page),guests = db.get_guest())
 
 			#留言管理
 			elif page == "links":
 
-				self.render(tmp_dir("admin/%s.html" % page),links = db.get_links())
+				self.MyRender(admin_dir("%s.html" % page),links = db.get_links())
 
 			#分类管理
 
 			elif page == "classify":
 
-				self.render(tmp_dir("admin/%s.html" % page),classify = db.get_classify())
+				self.MyRender(admin_dir("%s.html" % page),classify = db.get_classify())
 
 			#返回自定义页面
 			else:
-				self.render(tmp_dir("admin/%s.html" % page))
+				self.MyRender(admin_dir("%s.html" % page))
 		else:
 			self.redirect("/login")
 
@@ -182,6 +189,8 @@ class AdminHandler(BaseHandler):
 
 			db.add_classify(name)
 
+			print page
+
 			self.redirect("/admin/%s" % page)
 
 
@@ -210,7 +219,7 @@ class LoginHandler(BaseHandler):
 
 	def get(self):
 			self.set_secure_cookie("user","")
-			self.render(tmp_dir("admin/login.html"))
+			self.MyRender(admin_dir("login.html"))
 
 	def post(self):
 		try:

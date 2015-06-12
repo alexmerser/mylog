@@ -39,11 +39,11 @@ def cur_dir():
 
 #求模板url
 def template_url(path):
-	return "static/" + path;
+	return "static/"+ C("tmp_name") + path;
 
 #获取静态路径
 def tmp_dir(file):
-	return cur_dir() + C('templates') + file
+	return cur_dir() + C('templates') + C("tmp_name") + file
 
 #文章列表分页
 def split_list(list,num):

@@ -11,6 +11,7 @@ options = {
 	'descript'   : "要么庸俗，要么孤独。",
 
 	'templates'  : "templates/",
+	'tmp_name'   : "default/",
 	'admin' 	 : "admin/",
 	'upload'     : "upload/",
 	'pagecount'  : 5,

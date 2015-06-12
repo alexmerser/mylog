@@ -37,7 +37,7 @@ class AdminHandler(BaseHandler):
 				self.render(tmp_dir("admin/%s.html" % page),classify = db.get_classify())
 
 			#文章管理
-			if page == "articles":
+			elif page == "articles":
 				self.render(tmp_dir("admin/%s.html" % page),articles = db.get_article())
 
 			#更新文章

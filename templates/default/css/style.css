@@ -7,8 +7,8 @@ body
 }
 .top_bg 
 {
-	height:0px;
-	/*background:url(../images/banner.jpg) no-repeat;*/
+	height:260px;
+	background:url(../images/banner.jpg) no-repeat;
 }
 .top 
 {

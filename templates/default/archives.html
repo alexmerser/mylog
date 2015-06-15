@@ -1,10 +1,10 @@
 {% module Header() %}
 <!-- main -->
-{% for year in years %}
+{% for year in get_archives().keys() %}
 <div class="archives">
 	
 	<h1>{{ year }}年</h1>
-	{% for it in archives[year] %}
+	{% for it in get_archives()[year] %}
 	<ul class="ul_archives">
 		<li><span>{{ it[3] }}</span><a href="/article/{{ it[0] }}">{% raw it[1] %}</a></li>
 	</ul>

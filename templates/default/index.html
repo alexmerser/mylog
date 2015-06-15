@@ -1,26 +1,26 @@
 {% module Header() %}
 <!-- main -->
 <div class="main">
-	{% for it in articles %}
-	<span class="atc_name" ><a href="/article/{{ it[0] }}">{% raw it[1] %}</a></span>
+	{% for it in get_atcbypage(id) %}
+	<span class="atc_name" ><a href="/article?id={{ it[0] }}">{% raw it[1] %}</a></span>
 	<div class="article">
 	{% raw it[2][0] %}
 	</div>
 	<ul class="article_btm">
 		<li><span class="span1_main">{% raw it[3] %}</span></li>
-		<li><a href="/article/{{ it[0] }}">全文链接</a></li>
+		<li><a href="/article?id={{ it[0] }}">全文链接</a></li>
 	</ul>
 	{% end %}
 </div>
 <!-- main -->
 <div class="clear"></div>
 <div class="msdn">
-	{% if frontpage >= 0 %}
-	<a href="/page/{{ frontpage }}">上一页</a>
+	{% if get_frontpage(id) >= 0 %}
+	<a href="/?page={{ frontpage }}">上一页</a>
 	{% end %}
 
-	{% if nextpage > 0 %}
-	<a href="/page/{{ nextpage }}">下一页</a>
+	{% if get_nextpage(id) > 0 %}
+	<a href="/?page={{ frontpage }}">下一页</a>
 	{% end %}
 </div>
 

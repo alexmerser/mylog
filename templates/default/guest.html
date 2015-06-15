@@ -11,7 +11,7 @@ function appendText(w){
 <!-- main -->
 <div class="guests">
 	<span class="span_gwly">给我留言</span>
-	{% for it in guests %}
+	{% for it in get_guest() %}
 	<div class="guest_text">
 		<img src="{{ template_url("images/ly_img1.jpg") }}" width="50" height="50" />
 		<div class="guest_reply">

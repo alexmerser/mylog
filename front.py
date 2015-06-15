@@ -8,48 +8,35 @@ import config
 import module
 import db
 import manager
-
+import api
 
 #集中处理请求
 class BaseHandler(tornado.web.RequestHandler):
 
 	def MyRender(self,file,**args):
 
+
+		id = self.get_argument("id",0)
+
 		args = dict(args.items()+config.functions.items())
+		args = dict(args.items()+get_filefunc(cur_dir()+"api.py").items())
+		args['id'] = id
 
 		return self.render(file,**args)
 
 #处理网站入口
 class MainHandler(BaseHandler):
 
-	def get(self,page = 0):
-		
-		articlelist = db.get_atcbypage(page)
-			
-		for i in range(0,len(articlelist)):
-			articlelist[i][3] = articlelist[i][3].split(' ')[0]
-			
+	def get(self):
 
-		self.MyRender(tmp_dir("index.html"),\
-		articles = articlelist,
-		pageid 	 = 0,
-		frontpage = int(page) - 1,
-		nextpage = int(page) + 1 if db.get_maxpages() > int(page) else 0)
+		self.MyRender(tmp_dir("index.html"))
 
 #文章页
 class ArticleHandler(BaseHandler):
 
-	def get(self,id):
-		id = int(id)
+	def get(self):
 
-		article = db.get_atcbyid(id)
-
-		article[3] = article[3].split(' ')[0]
-
-		self.MyRender(tmp_dir("article.html"),\
-		article = article,
-		comments = db.get_commbyid(id),
-		csize = len(db.get_commbyid(id)))
+		self.MyRender(tmp_dir("article.html"))
 
 	def post(self,id):
 
@@ -70,7 +57,7 @@ class GuestHandler(BaseHandler):
 
 	def get(self):
 
-		self.MyRender(tmp_dir("guest.html"),guests = db.get_guest())
+		self.MyRender(tmp_dir("guest.html"))
 
 	def post(self):
 
@@ -91,11 +78,4 @@ class ArchivesHandler(BaseHandler):
 
 	def get(self):
 
-		archives = db.get_archives()
-		years = archives.keys()
-		for year in years:
-
-			for i in range(0,len(archives[year])):
-				archives[year][i][3] = archives[year][i][3].split(' ')[0]
-
-		self.MyRender(tmp_dir("archives.html"),archives = archives,years = years)
+		self.MyRender(tmp_dir("archives.html"))

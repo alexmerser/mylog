@@ -40,17 +40,17 @@ settings = {
 
 application = tornado.web.Application([
 	(r"/", 						front.MainHandler),
-	(r"/page/([^/]*)", 			front.MainHandler),
+	(r"/page", 					front.MainHandler),
 	(r"/guest", 				front.GuestHandler),
 	(r"/archives", 				front.ArchivesHandler),
-	(r"/article/([^/]*)", 		front.ArticleHandler),
+	(r"/article", 				front.ArticleHandler),
 	(r"/login", 				manager.LoginHandler),
 	(r"/admin/([^/]*)", 		manager.AdminHandler),
 	(r".*", 					BaseHandler),
 ], debug = True,**settings)
 
 if __name__ == "__main__":
-	
+
 	if db.init() == False:
 		print 'Database Initialize Faild!'
 		exit(0)

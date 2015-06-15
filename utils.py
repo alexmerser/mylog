@@ -4,7 +4,9 @@ import sys
 import os
 import sqlite3
 import config
+
 import time
+import re
 
 #空白字符转义
 def Space2Char(content):
@@ -67,3 +69,26 @@ def split_list(list,num):
 			tmplist = []
 			i = 0
 		tmplist.append(it)
+
+#获取一个PY文件里所有函数
+def get_filefunc(filename):
+
+	import api
+
+	ret = {}
+
+	rex = 'def\s([^\s]*)\('
+
+	fp = open(filename,'r')
+
+	if fp != None:
+		data = fp.read()
+
+		l = re.findall(rex,data)
+
+		for i in l:
+			ret[i] = eval("api.%s" % i)
+
+	return ret
+
+	

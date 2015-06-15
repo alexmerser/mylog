@@ -1,8 +1,10 @@
 ﻿#coding : utf8
+
 import sqlite3
 import time
 import markdown2
 import copy
+
 from utils import *
 
 g_article  = {}
@@ -391,7 +393,7 @@ def closedb(db):
 #初始化数据库
 def init():
 
-	try:
+	if 1==1:
 		init_classify()
 		init_article()
 		init_comment()
@@ -399,6 +401,6 @@ def init():
 		init_link()
 
 		return True
-	except:
+	else:
 		return False
 

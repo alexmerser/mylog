@@ -180,7 +180,7 @@
 
 ###1.提交评论###
 
-	URL: /article/{{ 文章id }}
+	URL: /article?id={{ 文章id }}
 	类型: POST
 	参数:
 		m         -> "add_comments"

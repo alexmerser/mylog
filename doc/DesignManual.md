@@ -10,26 +10,30 @@
 	</ul>
 </li>
 <li>
-	<a href="#结构">约定</a>
+	<a href="#约定">约定</a>
 	<ul>
 		<li><a href="#1获取静态文件">1.获取静态文件</a></li>
 		<li><a href="#2页面模板">2.页面模板</a></li>
 		<li><a href="#3HTTP异常页面">3.HTTP异常页面</a></li>
-		<li><a href="#4变量引用方法">4.变量引用方法</a></li>
-		<li><a href="#5内置模板方法">5.内置模板方法</a></li>
+		<li><a href="#4内置函数使用方法">4.内置函数使用方法</a></li>
+		<li><a href="#5获取配置信息">5.获取配置信息</a></li>
 	</ul>
 </li>
 <li>
-	<a href="#结构">变量</a>
+	<a href="#函数">函数</a>
 	<ul>
-		<li><a href="#indexhtml">index.html</a></li>
-		<li><a href="#articlehtml">article.html</a></li>
-		<li><a href="#guesthtml">guest.html</a></li>
-		<li><a href="#archiveshtml">archives.html</a></li>
+		<li><a href="#get_atcbypage">get_atcbypage</a></li>
+		<li><a href="#get_atcbyid">get_atcbyid</a></li>
+		<li><a href="#get_guest">get_guest</a></li>
+		<li><a href="#get_years">get_years</a></li>
+		<li><a href="#get_commbyid">get_commbyid</a></li>
+		<li><a href="#get_maxpages">get_maxpages</a></li>
+		<li><a href="#get_frontpage">get_frontpage</a></li>
+		<li><a href="#get_nextpage">get_nextpage</a></li>
 	</ul>
 </li>
 <li>
-	<a href="#结构">接口</a>
+	<a href="#接口">接口</a>
 	<ul>
 		<li><a href="#1提交评论">1.提交评论</a></li>
 		<li><a href="#2提交留言">2.提交留言</a></li>
@@ -41,6 +45,8 @@
 ---
 
 ###1.文件###
+
+模板存放在templates目录下，以模板名保存的目录当中，可以存放多个模板，在后台-》系统配置中可以设置使用哪一个模板。
 
 	├─css             (存放样式文件)
 	├─except          (存放HTTP异常页面)
@@ -56,11 +62,14 @@
 
 ###2.路由###
 
+请求URL和页面之间的对应关系如下。
+
 	"/", 				-》	index.html
-	"/page/([^/]*)" 	-》	index.html
-	"/guest" 			-》	guest.html
-	"/archives" 		-》	archives.html
-	"/article/([^/]*)", -》	article.html
+	"/page", 			-》	index.html
+	"/guest", 			-》	guest.html
+	"/archives", 		-》	archives.html
+	"/article", 		-》	article.html
+
 
 约定
 ---
@@ -87,152 +96,84 @@
 
 现提供403、404、500和503异常的处理页面。例如404页面，命名为[ 404.html ]放置在except目录下即可。
 
-###4.变量引用方法###
+###4.内置函数使用方法###
 
-每个模板页将提供相关功能变量在前端引用。如 [ article.html ] 页面，提供表示文章内容的数组变量[ article ]，在前端页面中引用方法为。
+模板将提供相关获取数据的功能函数在前端引用。如在[ article.html ] 页面，需要获取文章内容，则可以使用[ get_atcbyid ],函数来完成，在前端页面中使用方法为。
 
-	<div class="article">{{ article[1] }}</div>
-
-变量类型和python的数据类型一致，一般为变量、列表、字典三种。后文中变量说明将以如下格式表示。
-
-	变量名[类型]
-	{
-		说明
-		使用方法
-	}
-
-例如index.html提供的pageid当前页ID变量。描述为
-
-	pageid[整数]
-	{
-		当前页ID变量
-
-		<a>当前页数 ：{{ pageid }}</a>
-	}
-
-###5.内置模板方法###
-
-为了方便获取配置变量等功能，内置了一些模板方法，描述和使用方法如下。
-
-	获取博客名称( config.py中的options['blogname'] )
-	{% module Config("blogname") %}
-
-变量
----
-###index.html###
-
-	articles[二维列表]
-	{
-		文章列表
-
-		{% for it in articles %}
+		{% for it in get_atcbyid(id) %}
 			文章ID{% raw it[0] %}</br>
 			文章标题{% raw it[1] %}</br>
 			文章内容{% raw it[2] %}</br>
 			发表时间{% raw it[3] %}</br>
 		{% end %}
-	}
 
-	pageid[整数]
-	{
-		当前页ID变量
+变量类型和python的数据类型一致，一般为变量、列表、字典三种。使用方法可惨遭Tornado模板使用方法。
 
-		<a>当前页数 ：{{ pageid }}</a>
-	}
+###5.获取配置信息###
 
-	frontpage[整数]
-	{
-		上一页ID
+内置了函数C，可以来博客获取配置信息。以获取博客名称举例，调用方法为`{{ C("blogname") }}`。
+其他配置信息描述如下
 
-		{% if frontpage >= 0 %}
-			<a href="/page/{{ frontpage }}">上一页</a>
-		{% end %}
-	}
+	blogname =》  博客名称
+	nickname =》  作者名称
+	email    =》  作者邮件
+	descript =》  博客描述
 
-	nextpage[整数]
-	{
-		下一页ID
 
-		{% if nextpage > 0 %}
-			<a href="/page/{{ nextpage }}">下一页</a>
-		{% end %}
-	}
+内置函数
+---
+###get_atcbypage###
 
-###article.html###
+	描述：通过页数得到文章列表
+	参数：页数ID
+	原形：get_atcbypage(id)
+	返回：返回一个列表，每个子项为一个列表，按序依次为ID，标题，内容，时间，分类ID
 
-	article[列表]
-	{
-		文章内容列表
+###get_atcbyid###
 
-		文章ID{{ article[0] }}</br>
-		文章标题{{ article[1] }}</br>
-		文章内容{{ article[2] }}</br>
-		发表时间{{ article[3] }}</br>
-	}
+	描述：通过文章ID得到文章
+	参数：文章ID
+	原形：get_atcbyid(id)
+	返回：返回一个列表，包含文章内容，按序依次为ID，标题，内容，时间，分类ID
 
-	comments[二维列表]
-	{
-		当前文章评论列表
-		{% for it in comments %}
-			文章ID{{ it[0] }}</br>
-			评论昵称{{ it[1] }}</br>
-			EMAIL{{ it[2] }}</br>
-			URL{{ it[3] }}</br>
-			内容{{ it[4] }}</br>
-			时间{{ it[5] }}</br>
-		{% end %}
-	}
+###get_guest###
 
-	csize[整数]
-	{
-		当前文章评论数量
+	描述：得到全部留言
+	原形：get_guest()
+	返回：返回一个列表，每个子项为一个列表，按次序为ID，昵称，邮件，URL，内容，时间
 
-		<a>评论数量 : {{ csize }}</a>
-	}
+###get_years###
 
-###guest.html###
+	描述：得到存档年限
+	原形：get_years()
+	返回：返回一个列表，依序为已有文章年数。
 
-	guests[列表]
-	{
-		留言内容列表
+###get_commbyid###
 
-		{% for it in guests %}
-			留言ID{{ it[0] }}</br>
-			留言昵称{{ it[1] }}</br>
-			EMAIL{{ it[2] }}</br>
-			URL{{ it[3] }}</br>
-			内容{{ it[4] }}</br>
-			时间{{ it[5] }}</br>
-		{% end %}
-	}
+	描述：通过ID得到评论
+	原形：get_commbyid(id)
+	参数：评论ID
+	返回：返回一个列表，按次序为ID，昵称，邮件，URL，内容，时间
 
-###archives.html###
+###get_maxpages###
 
-	years[列表]
-	{
-		所有文章年限列表
+	描述：得到最大页数
+	原形：get_maxpages()
+	返回：整数，最大页数
 
-		{% for year in years %}
-			年份 ：{{ year }}
-		{% end %}
-	}
+###get_frontpage###
 
-	archives[归档字典]
-	{
-		与years变量配合使用，获取特定年限的文章列表
+	功能：得到上一页页数
+	参数：当前页数
+	原形：get_frontpage(id)
+	返回：整数，上一页页数
 
-		{% for year in years %}
+###get_nextpage###
 
-			<h1>{{ year }}年</h1>
-			{% for it in archives[year] %}
-				文章ID{% raw it[0] %}</br>
-				文章标题{% raw it[1] %}</br>
-				文章内容{% raw it[2] %}</br>
-				发表时间{% raw it[3] %}</br>
-			{% end %}
-
-		{% end %}
-	}
+	功能：得到下一页页数
+	参数：当前页数
+	原形：get_nextpage(id)
+	返回：整数，下一页页数
 
 接口
 ---

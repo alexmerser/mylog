@@ -26,7 +26,7 @@
 <!-- main -->
 <div class="comments">
 	<span class="span_cmt">评论({{ len(get_commbyid(id)) }})</span>
-	<form class="guestboard" method="post" action="/article/{{ get_atcbyid(id)[0] }}">
+	<form class="guestboard" method="post" action="/article?id={{ get_atcbyid(id)[0] }}">
 		<input type="hidden" name="m" value="add_comments"> 
 		<input type="hidden" name="id" value="{{ get_atcbyid(id)[0] }}"> 
 		<input type="text" name="name" placeholder="昵称">

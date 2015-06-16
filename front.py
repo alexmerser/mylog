@@ -38,19 +38,19 @@ class ArticleHandler(BaseHandler):
 
 		self.MyRender(tmp_dir("article.html"))
 
-	def post(self,id):
+	def post(self):
 
 		m = self.get_argument("m","")
-
+		id = self.get_argument("id","")
 		name = self.get_argument("name","")
 		mail = self.get_argument("mail","")
 		url = self.get_argument("url","")
-		content = self.get_argument("url","")
+		content = self.get_argument("content","")
 
 		if m == "add_comments":
 			db.add_comment(id,name,mail,url,content)
 
-		self.redirect("/article/%s" % id)
+		self.redirect("/article?id=%s" % id)
 
 #留言页
 class GuestHandler(BaseHandler):
@@ -66,7 +66,7 @@ class GuestHandler(BaseHandler):
 		name = self.get_argument("name","")
 		mail = self.get_argument("mail","")
 		url = self.get_argument("url","")
-		content = self.get_argument("url","")
+		content = self.get_argument("content","")
 
 		if m == "add_guests":
 			db.add_guest(name,mail,url,content)

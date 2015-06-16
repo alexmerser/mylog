@@ -14,7 +14,7 @@ function appendText(w){
 	{% for it in get_guest() %}
 	<div class="guest_text">
 		<img src="{{ template_url("images/ly_img1.jpg") }}" width="50" height="50" />
-		<div class="guest_reply">
+		<div class="guest_reply" style="margin-left:70px;margin-top:5px">
 			<span>{{ it[1] }}</span>
 			<p>{{ it[4] }}</p>
 			<div id="h1"></div>
@@ -29,7 +29,7 @@ function appendText(w){
 		<input type="text" name="name" placeholder="昵称">
 		<input type="text" name="mail" placeholder="E-Mail">
 		<input type="text" name="url" placeholder="URL">
-		<textarea name="" cols="103" rows="10" ></textarea>
+		<textarea name="content" cols="103" rows="10" ></textarea>
 		<button type"submit">提交</button>
 	</form>
 	

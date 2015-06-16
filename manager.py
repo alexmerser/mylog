@@ -74,6 +74,11 @@ class AdminHandler(BaseHandler):
 
 				self.MyRender(admin_dir("%s.html" % page),classify = db.get_classify())
 
+			#博客配置
+			elif page == "options":
+
+				self.MyRender(admin_dir("%s.html" % page),templates = os.listdir(cur_dir() + "templates"))
+
 			#返回自定义页面
 			else:
 				self.MyRender(admin_dir("%s.html" % page))
@@ -203,6 +208,20 @@ class AdminHandler(BaseHandler):
 				self.redirect("/login")
 
 			db.del_classify(id)
+
+			self.redirect("/admin/%s" % page)
+
+		elif m == "update_options":
+
+			map = {}
+
+			map['blogname']  = self.get_argument("blogname" ,"")
+			map['nickname']  = self.get_argument("nickname" ,"")
+			map['email']     = self.get_argument("email" ,"")
+			map['descript']  = self.get_argument("descript" ,"")
+			map['pagecount'] = self.get_argument("pagecount" ,"")
+
+			config.update(map)
 
 			self.redirect("/admin/%s" % page)
 

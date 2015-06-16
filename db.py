@@ -105,7 +105,7 @@ def get_article():
 
 #得到最大页数 
 def get_maxpages():
-	return len(g_article) / C("pagecount")
+	return len(g_article) / int(C("pagecount"))
 
 
 #按页数获取文章

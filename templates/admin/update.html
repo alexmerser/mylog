@@ -59,7 +59,7 @@
 	<div class="row-fluid" style="padding-left:50px;">
 		<div class="span3">
 			<div class="sidebar-nav">
-				<div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu"><i class="icon-dashboard"></i>文章管理</div>
+				<div class="nav-header" data-toggle="collapse" data-target="#dashboard-menu"><i class="icon-dashboard"></i>内容管理</div>
 				<ul id="dashboard-menu" class="nav nav-list collapse in">
 					<li ><a href="/admin/index">发表文章</a></li>
 					<li ><a href="/admin/articles">文章管理</a></li>
@@ -69,9 +69,10 @@
 					<li ><a href="/admin/links">友情链接</a></li>
 					
 				</ul>
-				<div class="nav-header" data-toggle="collapse" data-target="#accounts-menu"><i class="icon-briefcase"></i>账户管理</div>
+				<div class="nav-header" data-toggle="collapse" data-target="#accounts-menu"><i class="icon-briefcase"></i>系统管理</div>
 				<ul id="accounts-menu" class="nav nav-list collapse in">
-					<li ><a href="/admin/login">退出</a></li>
+					<li ><a href="/admin/options">系统配置</a></li>
+					<li ><a href="/admin/login">退出后台</a></li>
 					<li ><a href="#">密码重置</a></li>
 				</ul>
 			
@@ -89,12 +90,16 @@
 					<div class="span2">
 						<select name="classify">
 							{% for it in classify %}
-							<option value ="1">{{ it[1] }}</option>
+							{% if article[4] == it[0] %}
+							<option value ="{{ it[0] }}" selected>{{ it[1] }}</option>
+							{% else %}
+							<option value ="{{ it[0] }}">{{ it[1] }}</option>
+							{% end %}
 							{% end %}
 						</select>
 					</div>
 				</div>
-				<textarea rows="15" class="span8" name="content">{{ article[2] }}</textarea></br>
+				<textarea rows="19" class="span8" name="content">{{ article[2] }}</textarea></br>
 				<button type="submit" class="btn" style="float:left;margin-right:50px;">更新</button>
 				<h5 style="margin-top:7px;">提醒：分页符为[split_sign]</h5>
 			</fieldset>

@@ -393,7 +393,7 @@ def closedb(db):
 #初始化数据库
 def init():
 
-	if 1==1:
+	try:
 		init_classify()
 		init_article()
 		init_comment()
@@ -401,6 +401,6 @@ def init():
 		init_link()
 
 		return True
-	else:
+	except:
 		return False
 

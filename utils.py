@@ -10,6 +10,8 @@ import re
 
 #空白字符转义
 def Space2Char(content):
+	content = content.replace("\"","\\mh")
+	content = content.replace("\'","\\yh")
 	content = content.replace("\n","\\n")
 	content = content.replace("\r","\\r")
 
@@ -17,6 +19,8 @@ def Space2Char(content):
 
 #转义字符
 def Char2Space(content):
+	content = content.replace("\\mh","\"")
+	content = content.replace("\\yh","\'")
 	content = content.replace("\\n","\n")
 	content = content.replace("\\r","\r")
 

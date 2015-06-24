@@ -12,9 +12,35 @@ class UploadFileHandler(tornado.web.RequestHandler):
 		if file == "":
 			self.redirect("/")
 
-		#Content-Type这里我写的时候是固定的了，也可以根据实际情况传值进来
-		self.set_header ('Content-Type', 'application/octet-stream')
-		self.set_header ('Content-Disposition', 'attachment; filename='+file)
+		prefix = file.split('.')[1]
+
+		type = "application/octet-stream"
+
+		if prefix == "jpg":
+			type = "image/jpeg"
+
+		elif prefix == "png":
+			type = "image/png"
+
+		elif prefix == "bmp":
+			type = "application/x-bmp"
+
+		elif prefix == "gif":
+			type = "image/gif"
+
+		elif prefix == "mp3":
+			type = "audio/mp3"
+
+		elif prefix == "mp4":
+			type = "video/mpeg4"
+
+		elif prefix == "html" or prefix == "txt" or prefix == "htm":
+			type = "text/html"
+
+
+		self.set_header ('Content-Type', type)
+
+		#self.set_header ('Content-Disposition', 'attachment; filename='+file)
 
 		#读取的模式需要根据实际情况进行修改
 		with open(cur_dir() + C('upload')+file, 'rb') as f:
@@ -28,8 +54,6 @@ class UploadFileHandler(tornado.web.RequestHandler):
 		self.finish()
 
 	def post(self,file = ""):
-
-		print 123
 
 		upload_path = cur_dir() + C('upload')  
 

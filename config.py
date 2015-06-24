@@ -7,7 +7,8 @@ options = {}
 functions = {
 	'template_url' : template_url,
 	'admin_url'    : admin_url,
-	'C'			   : C
+	'C'			   : C,
+	'get_upload'   : get_upload
 }
 
 

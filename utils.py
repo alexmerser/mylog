@@ -30,6 +30,35 @@ def Char2Space(content):
 def C(key = ''):
 	return config.options if (key == '') else config.options[key]
 
+#获取上传文件列表
+def get_upload(num):
+
+	filemap = {}
+
+	filelist = os.listdir(cur_dir() + C("upload"))
+
+	for file in filelist:
+
+		if num == 0:
+			break
+
+		num -= 1
+
+		stat = os.stat(cur_dir() + C("upload") + file)
+		x = time.localtime(stat.st_mtime)
+		filemap[file] = time.strftime('%Y-%m-%d %H:%M:%S',x)
+
+	return sorted(filemap.items(), key=lambda d:d[1],reverse = True)
+
+
+def del_upload(file):
+
+	file = file.replace("..","")
+
+	os.remove(cur_dir() + C("upload") + file)
+
+
+
 #得到当前时间
 def GetNowTime():
     return time.strftime("%Y-%m-%d %H:%M:%S",time.localtime(time.time()))

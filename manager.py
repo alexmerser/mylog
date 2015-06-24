@@ -1,6 +1,7 @@
 #coding: utf8
 import tornado.web
 import db
+import json
 from utils import *
 
 # 简单的用户认证
@@ -106,6 +107,7 @@ class AdminHandler(BaseHandler):
 
 			if title == "" or content == "" or classify == "":
 				self.redirect("/login")
+				return
 
 			db.add_article(title,content,classify)
 
@@ -117,6 +119,7 @@ class AdminHandler(BaseHandler):
 
 			if id == "":
 				self.redirect("/login")
+				return
 
 			db.del_article(id)
 
@@ -132,6 +135,7 @@ class AdminHandler(BaseHandler):
 
 			if id == "" or title == "" or content == "":
 				self.redirect("/login")
+				return 
 
 			db.update_article(id,title,content)
 
@@ -144,6 +148,7 @@ class AdminHandler(BaseHandler):
 
 			if id == "":
 				self.redirect("/login")
+				return 
 
 			db.del_comment(id)
 
@@ -156,6 +161,7 @@ class AdminHandler(BaseHandler):
 
 			if id == "":
 				self.redirect("/login")
+				return
 
 			db.del_guest(id)
 
@@ -170,6 +176,7 @@ class AdminHandler(BaseHandler):
 
 			if url == "" or title == "":
 				self.redirect("/login")
+				return
 
 			db.add_link(title,url)
 
@@ -183,6 +190,7 @@ class AdminHandler(BaseHandler):
 
 			if id == "":
 				self.redirect("/login")
+				return
 
 			db.del_link(id)
 
@@ -195,6 +203,7 @@ class AdminHandler(BaseHandler):
 
 			if name == "":
 				self.redirect("/login")
+				return
 
 			db.add_classify(name)
 
@@ -210,11 +219,13 @@ class AdminHandler(BaseHandler):
 
 			if id == "":
 				self.redirect("/login")
+				return
 
 			db.del_classify(id)
 
 			self.redirect("/admin/%s" % page)
 
+		#更新配置
 		elif m == "update_options":
 
 			map = {}
@@ -228,6 +239,20 @@ class AdminHandler(BaseHandler):
 			config.update(map)
 
 			self.redirect("/admin/%s" % page)
+
+		#获取最近上传文件
+		elif m == "get_upload":
+
+			files = get_upload(10)
+
+			self.write(json.dumps(files))
+
+				#获取最近上传文件
+		elif m == "del_upload":
+
+			filename = self.get_argument('filename')
+
+			del_upload(filename)
 
 
 		else:

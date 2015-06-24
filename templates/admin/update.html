@@ -100,10 +100,33 @@
 					</div>
 				</div>
 				<textarea rows="19" class="span8" name="content">{{ article[2] }}</textarea></br>
-				<button type="submit" class="btn" style="float:left;margin-right:50px;">更新</button>
+				<button type="submit" class="btn" style="float:left;margin-right:10px;">更新</button>
+				<a onclick="myUpload()" class="btn" style="float:left;margin-right:40px;">上传文件</a>
 				<h5 style="margin-top:7px;">提醒：分页符为[split_sign]</h5>
 			</fieldset>
 		</form>
+		<div class="span8" style="margin-left:0px;">
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>最近上传的文件</th>
+					<th>时间</th>
+					<th>插入</th>
+					<th>删除</th>
+				</tr>
+			</thead>
+				<tbody class="upload_list">
+					{% for it in get_upload(10) %}
+					<tr>
+					<td><a href="/upload/{{ it[0] }}">{% raw it[0] %}</a></td>
+					<td>{% raw it[1] %}</td>
+					<td><button class="btn" onclick="insert_upload('{{ it[0] }}')" >插入</button></td>
+					<td><button class="btn" onclick="DelUpFile('{{ it[0] }}')" >删除</button></td>
+					</tr>
+					{% end %}
+				</tbody>
+		</table>
+		</div>
 		
 		<div class="copyrights">Collect from Floyd's Blog'</div>
 		

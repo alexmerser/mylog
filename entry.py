@@ -9,6 +9,7 @@ import module
 import db
 import front
 import manager
+import upload
 
 from utils import *
 
@@ -54,6 +55,7 @@ if __name__ == "__main__":
 		(r"/article", 				front.ArticleHandler),
 		(r"/login", 				manager.LoginHandler),
 		(r"/admin/([^/]*)", 		manager.AdminHandler),
+		(r"/upload/([^/]*)", 		upload.UploadFileHandler),
 		(r".*", 					BaseHandler),
 	], debug = True,**settings)
 

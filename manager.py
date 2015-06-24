@@ -9,9 +9,12 @@ class BaseHandler(tornado.web.RequestHandler):
 	def get_current_user(self):
 		return self.get_secure_cookie("user")
 
+	def get_current_pwd(self):
+		return self.get_secure_cookie("pwd")
+
 	def check_login(self):
 		try:
-			if self.get_current_user() == C('username'):
+			if self.get_current_user() == C('username') and self.get_current_pwd() == C('password'):
 				return True
 			else:
 				return False
@@ -81,7 +84,8 @@ class AdminHandler(BaseHandler):
 
 			#返回自定义页面
 			else:
-				self.MyRender(admin_dir("%s.html" % page))
+				#self.MyRender(admin_dir("%s.html" % page))
+				self.redirect("/login")
 		else:
 			self.redirect("/login")
 
@@ -249,6 +253,7 @@ class LoginHandler(BaseHandler):
 
 		if user == C('username') and pwd == C('password'):
 			self.set_secure_cookie("user", user)
+			self.set_secure_cookie("pwd", pwd)
 			self.redirect("/admin/index")
 
 		else:

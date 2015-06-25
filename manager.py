@@ -78,6 +78,13 @@ class AdminHandler(BaseHandler):
 
 				self.MyRender(admin_dir("%s.html" % page),classify = db.get_classify())
 
+			#分类管理
+
+			elif page == "upload":
+
+				self.MyRender(admin_dir("%s.html" % page))
+
+
 			#博客配置
 			elif page == "options":
 

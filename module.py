@@ -22,8 +22,17 @@ class Header(BaseModule):
 class Sidebar(BaseModule):
 	def render(self):
 		list = db.get_classify()
-		return self.MyRender(tmp_dir("sidebar.html"),classify = list)
+		return self.MyRender(tmp_dir("sidebar.html"))
 		
 class Footer(BaseModule):
 	def render(self):
 		return self.MyRender(tmp_dir("footer.html"))
+
+
+class Admin_Header(BaseModule):
+	def render(self):
+		return self.MyRender(admin_dir("header.html"))
+
+class Admin_Sidebar(BaseModule):
+	def render(self):
+		return self.MyRender(admin_dir("sidebar.html"))

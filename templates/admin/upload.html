@@ -1,0 +1,61 @@
+{% module Admin_Header() %}
+<body> 
+	<!--<![endif]-->
+	</br>
+	
+	<div class="row-fluid" style="padding-left:50px;">
+		{% module Admin_Sidebar() %}
+		<d5 class="span9">
+		
+
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th>上传的文件</th>
+					<th>时间</th>
+					<th>删除</th>
+				</tr>
+			</thead>
+				<tbody class="upload_list">
+					{% for it in get_upload(1000) %}
+					<tr>
+					<td><a href="/upload/{{ it[0] }}">{% raw it[0] %}</a></td>
+					<td>{% raw it[1] %}</td>
+					<td><button class="btn" onclick="DelUpFile('{{ it[0] }}')" >删除</button></td>
+					</tr>
+					{% end %}
+				</tbody>
+		</table>
+		
+		<div class="row"  style="margin-left:5px;">
+			<a onclick="myUpload()" class="btn" style="float:left;margin-right:40px;">上传文件</a>			
+		</div>
+
+		
+		<div class="copyrights">Collect from Floyd's Blog'</div>
+		
+		</div>
+	</div> 
+	
+	
+	
+	<footer>
+		<hr>
+		
+		<p style="padding-left:50px;" >&copy; 2012 <a href="#">Platonix Crew</a></p>
+	</footer>
+	
+	
+	
+	
+	<!-- Le javascript
+	================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script src="{{ admin_url("js/bootstrap/js/bootstrap.js") }}></script>
+	
+
+</body>
+</html>
+
+
+

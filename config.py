@@ -1,6 +1,7 @@
 ﻿#coding : utf8
 from utils import *
 import ConfigParser
+import sys
 
 options = {}
 
@@ -17,7 +18,7 @@ def init():
 	global options
 
 	cf = ConfigParser.ConfigParser()
-	cf.read('config.ini')
+	cf.read(cur_dir() + 'config.ini')
 
 	for it in cf.options("config"):
 		options[it] = cf.get("config",it)
@@ -27,10 +28,14 @@ def init():
 def update(map):
 
 	cf = ConfigParser.ConfigParser()
-	cf.read('config.ini')
+	cf.read(cur_dir() + 'config.ini')
 
 	for key in map:
-		options[key] = map[key]
-		cf.set("config",key,map[key])
+		options[key] = map[key].encode('utf8')
+		cf.set("config",key,map[key].encode('utf8'))
 
+	fp = open(cur_dir() + 'config.ini','w')
 
+	cf.write(fp)
+
+	fp.close()

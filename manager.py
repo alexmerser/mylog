@@ -2,6 +2,7 @@
 import tornado.web
 import db
 import json
+import time
 from utils import *
 
 # 简单的用户认证
@@ -13,14 +14,21 @@ class BaseHandler(tornado.web.RequestHandler):
 	def get_current_pwd(self):
 		return self.get_secure_cookie("pwd")
 
+	def get_current_timelock(self):
+		return self.get_secure_cookie("timelock")
+
+
 	def check_login(self):
 		try:
 			if self.get_current_user() == C('username') and self.get_current_pwd() == C('password'):
-				return True
+				return check_timeout(self.get_current_timelock())
 			else:
 				return False
 		except:
 			self.set_secure_cookie("user","")
+			self.set_secure_cookie("pwd","")
+			self.set_secure_cookie("timelock","")
+
 			return False
 
 	def MyRender(self,file,**args):
@@ -242,6 +250,7 @@ class AdminHandler(BaseHandler):
 			map['email']     = self.get_argument("email" ,"")
 			map['descript']  = self.get_argument("descript" ,"")
 			map['pagecount'] = self.get_argument("pagecount" ,"")
+			map['timeout'] = self.get_argument("timeout" ,"")
 
 			config.update(map)
 
@@ -286,6 +295,8 @@ class LoginHandler(BaseHandler):
 		if user == C('username') and pwd == C('password'):
 			self.set_secure_cookie("user", user)
 			self.set_secure_cookie("pwd", pwd)
+			self.set_secure_cookie("timelock",GetNowTime())
+
 			self.redirect("/admin/index")
 
 		else:

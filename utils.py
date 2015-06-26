@@ -124,4 +124,28 @@ def get_filefunc(filename):
 
 	return ret
 
+
+#检查时间超时
+def check_timeout(timelock):
+
+	locktime = timelock.split(" ")
+
+	curtime = GetNowTime().split(" ")
+
+	if locktime[0] != curtime[0]:
+		return False
+
+	time1 = locktime[1].split(":")
+	time2 = curtime[1].split(":")
+
+	locks = int(time1[0])*3600 + int(time1[1])*60 + int(time1[2])
+	curs =  int(time2[0])*3600 + int(time2[1])*60 + int(time2[2])
+
+	if curs - locks < 0 :
+		return False
+
+	if curs - locks > int(C("timeout")):
+		return False
+
+	return True
 	
